@@ -1,18 +1,29 @@
 import {ref, computed} from 'vue'
 import {defineStore} from 'pinia'
-import dateUtil from '../utils/dateUtils'
-export const seasonDataStorage = defineStore('seasonDataStorage', () => {
+import dateUtils from "@/utils/dateUtils.ts";
+import axios from "axios";
+export const seasonDataStorage = defineStore(
+    'seasonDataStorage', () => {
 
-    const currentSeason = ref<Number>(dateUtil.getFullYear())
-    const totalRound = ref<Number>(0)
+    const currentSeason = ref<Number>(dateUtils.getFullYear())
+
+    const currentSeasonInfo = ref(null)
+
+        const  refreshCurrentSeasonInfo = ()=> {
+        axios.get('https://f1api.dev/api/current').then(res => {
+            currentSeasonInfo.value = res.data
+            console.log(res.data)
+        }).catch(error => {
+            console.log(error)
+        })
+    }
 
 
-
-    return {currentSeason}
+    return {currentSeason,currentSeasonInfo,refreshCurrentSeasonInfo}
 }, {
     persist: [
         {
-            pick: ['currentSeason'],
+            pick: ['currentSeason','currentSeasonInfo'],
         }
     ]
 })
