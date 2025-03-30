@@ -1,0 +1,48 @@
+:root{
+  /* 品牌色 */
+  --brand-color: #ff2800;
+
+  /* 背景 边框 */
+  --bg-color: #000000; /* 深空黑背景 */
+  --card-bg-color: rgba(17, 17, 17, 0.44); /* 卡片背景（带层次感的深灰） */
+  --card-border-color: #1f1f1f;
+
+  /* 文字 */
+  --text-p: #e9ecef; /* 主要文字（浅灰白） */
+  --text-s: #adb5bd; /* 次级文字 */
+  --text-inverted: #212529; /* 深色背景上的文字 */
+
+  /* 状态色 */
+  --success-color: #00ff88; /* 夜赛成功提示 */
+  --warning-color: #ff9100; /* 夜赛警告加强 */
+  --error-color: #ff4444; /* 夜赛紧急红色 */
+
+  /* 赛道元素 */
+  --racing-line: #00ffff; /* 夜赛荧光赛道线 */
+  --pitstop-blue: #00b4d8; /* 夜赛进站蓝 */
+
+  /* 交互状态 */
+  --hover-opacity: 0.8; /* 暗夜更高悬停透明度 */
+  --active-shadow: 0 0 12px rgba(255, 40, 0, 0.5); /* 更强烈的激活阴影 */
+
+  /* 圆角 */
+  --border-radius: 0.5rem;
+
+
+
+
+  /* 数据可视化专用色 */
+  --lap-time-up: #ff4444; /* 单圈时间上升 */
+  --lap-time-down: #00c853; /* 单圈时间下降 */
+  --drs-zone: #7b1fa2; /* DRS区域紫色 */
+
+  /* 动画参数 */
+  --pitstop-animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 快速切换动效 */
+  --tyre-degrade-gradient: linear-gradient(
+          to right,
+          #00c853 0%,
+          #ffab00 50%,
+          #d50000 100%
+  ); /* 轮胎磨损渐变 */
+}
+
