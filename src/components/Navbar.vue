@@ -1,11 +1,13 @@
 <script setup lang="ts">
 
+import router from "@/router";
 </script>
 
 <template>
 
   <nav class="navbar">
-    <div class="nav-logo">
+    <div class="nav-logo" @click="()=> router.push('/race')">
+      Fonelify
     </div>
     <div class="navbar-link">
       <RouterLink to="/race">比赛</RouterLink>
@@ -34,11 +36,16 @@
 }
 
 .nav-logo {
-  width: 50px;
-  height: 50px;
-  background-image: url("@/assets/logo.svg");
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  color: var(--brand-color);
+  font-weight: 900;
+  font-size: 1.2em;
+  margin: 0 10px;
+/*  background-image: url("@/assets/logo.svg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
 }
 
 .navbar-link {

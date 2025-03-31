@@ -4,6 +4,7 @@ import {computed, createElementBlock, ref} from "vue";
 import dateUtils from "@/utils/dateUtils.ts";
 import infoCnFormatUtil from "@/utils/infoCnFormatUtil.ts";
 import circuit from '@/data/circuit.json'
+import RaceStatusCom from "@/components/RaceStatusCom.vue";
 
 const props = defineProps({
   race: {
@@ -19,10 +20,6 @@ const props = defineProps({
     default: true
   }
 })
-const raceStatus = computed(() => {
-  const date = props.race.schedule.race.date;
-  return dateUtils.raceStatusFormat(date);
-});
 // 日期
 const raceSchedule = computed(() => {
   const fp1Date = props.race.schedule.fp1.date;
@@ -70,9 +67,7 @@ const circuitInfo = ref<any>(circuit.find(item =>{
     <div class="race-item-overview" @click="collapseRaceDetail" v-if="showTitle">
       <span>{{raceSchedule}}</span>
       <span>{{ infoCnFormatUtil.grandPrixFormatUtil(race.raceName) }}</span>
-      <span v-if="raceStatus===0" class="status-ed"> 完赛</span>
-      <span v-if="raceStatus===1" class="status-ing"> 本周</span>
-      <span v-if="raceStatus===2" class="status-future"> 未赛</span>
+      <span><RaceStatusCom :propsData="raceDate"/></span>
       <span class="race-item-collapse-icon" ref="collapseIconElement"> <Icon icon="ooui:collapse"/> </span>
     </div>
     <div class="race-item-detail" v-show="collapseStatus">
@@ -124,18 +119,6 @@ const circuitInfo = ref<any>(circuit.find(item =>{
     display: flex;
     justify-content: center;
   }
-}
-
-.status-ed {
-  color: var(--text-s);
-}
-
-.status-ing {
-  color: var(--brand-color);
-}
-
-.status-future {
-  color: var(--text-p);
 }
 
 .race-item-detail {

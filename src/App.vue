@@ -9,20 +9,35 @@ import Footer from "@/components/Footer.vue";
 const seasonData = seasonDataStorage();
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true)
-onMounted(() => {
-  fetchDate()
+onBeforeMount(async () => {
+  await fetchDate()
 })
 
-const fetchDate = () => {
-  loadingStatus.value = true
-  if (seasonData.refreshCurrentSeasonInfo() && seasonData.refreshLastRoundInfo() && seasonData.refreshNextRoundInfo()) {
-    setTimeout(() => {
-      loadingStatus.value = false
-    }, 1000)
-  } else {
-    loadingStatus.value = true
+const fetchDate = async () => {
+  loadingStatus.value = true;
+  try {
+    // 并行执行三个请求
+    const results = await Promise.all([
+      seasonData.refreshCurrentSeasonInfo(),
+      seasonData.refreshLastRoundInfo(),
+      seasonData.refreshNextRoundInfo()
+    ]);
+    // 检查所有结果是否为 true
+    if (results.every(result => result)) {
+      setTimeout(()=>{
+        loadingStatus.value = false;  // 显示数据加载
+      },1000)
+    } else {
+      // 处理部分请求失败的情况
+      console.error('部分请求未成功');
+      loadingStatus.value = true; // 根据需求决定是否保持 loading
+    }
+  } catch (error) {
+    console.error('请求发生错误:', error);
+    loadingStatus.value = true; // 根据需求决定是否保持 loading
   }
-}
+};
+
 </script>
 
 <template>
