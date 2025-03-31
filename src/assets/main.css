@@ -3,6 +3,28 @@
   transition: color 0.2s;
 }
 html,body{
+  ::-webkit-scrollbar
+  {
+    width:6px;
+    height:6px;
+  }
+  /*定义滚动条轨道
+   内阴影+圆角*/
+  ::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius:3px;
+  }
+  /*定义滑块
+   内阴影+圆角*/
+  ::-webkit-scrollbar-thumb
+  {
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+    background-color: var(--brand-color);
+    border-radius:10px;
+  }
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   background-color: var(--bg-color);
@@ -15,7 +37,7 @@ a{
 }
 
 .main{
-  padding:  100px 10px 10px 10px;
+  padding:  90px 7px 7px 7px;
   color: var(--text-p);
   margin: 0 auto;
   max-width: 1200px;

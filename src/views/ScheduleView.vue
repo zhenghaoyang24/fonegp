@@ -10,18 +10,19 @@ const {currentSeasonInfoOfAllRaces} = storeToRefs(seasonData)
 </script>
 
 <template>
-
   <div class="schedule-race-table">
     <div class="race-item-title">
       <span>日期</span>
       <span>大奖赛</span>
       <span>状态</span>
     </div>
-    <div class="race-item-content" v-for="(raceItem ,index) in currentSeasonInfoOfAllRaces" :key="index">
-      <RaceScheduleItem :race="raceItem" :collapse="false"/>
+    <div class="race-item-body">
+      <div class="race-item-content" v-for="(raceItem ,index) in currentSeasonInfoOfAllRaces" :key="index">
+        <RaceScheduleItem :race="raceItem" :collapse="false"/>
+      </div>
     </div>
-  </div>
 
+  </div>
 </template>
 
 <style scoped>
@@ -34,20 +35,23 @@ const {currentSeasonInfoOfAllRaces} = storeToRefs(seasonData)
 }
 
 .race-item-title {
+  z-index: 999;
   padding: 10px 0;
-  top: 80px;
-  position: sticky;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: var(--bg-color);
-
   > span {
     display: flex;
     justify-content: center;
   }
 }
-
+.race-item-body{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
 .race-item-content {
+
   padding: 0 5px;
 }
 </style>

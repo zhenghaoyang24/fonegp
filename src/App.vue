@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar.vue";
 
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
 import {onBeforeMount, onMounted, ref} from "vue";
+import Footer from "@/components/Footer.vue";
 
 const seasonData = seasonDataStorage();
 // 加载状态 true 正在加载
@@ -29,11 +30,12 @@ const fetchDate = () => {
     <Navbar/>
   </header>
   <main class="main no-data-view" v-if="loadingStatus">
-    正在加载数据 ....
+    别急，正在暖胎 ...
   </main>
   <main class="main" v-else>
     <RouterView/>
   </main>
+  <Footer/>
 </template>
 
 <style scoped>

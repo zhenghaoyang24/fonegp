@@ -6,6 +6,7 @@ const seasonData = seasonDataStorage();
 import {storeToRefs} from 'pinia'
 import {computed, onMounted, ref} from "vue";
 import dateUtils from "@/utils/dateUtils.ts";
+import RaceScheduleItem from "@/components/RaceScheduleItem.vue";
 
 const {
   currentSeasonInfoOfSeason,
@@ -22,8 +23,7 @@ const raceStatus = computed(() => {
 </script>
 
 <template>
-
-  <div class="content">
+  <div class="race-view-content">
     <div class="season-overview-content">
       <h2>{{ currentSeasonInfoOfSeason }}赛季</h2>
       <div class="season-info">
@@ -39,7 +39,13 @@ const raceStatus = computed(() => {
       </div>
     </div>
     <div class="round-last-next">
-      <div class="round-last-next-content">
+      <div class="round-last">
+        <h3>上一场</h3>
+        <RaceScheduleItem :race="lastRoundInfoOfRace" :collapse="true" :show-title="false"/>
+      </div>
+      <div class="round-next">
+        <h3>下一场</h3>
+        <RaceScheduleItem :race="nextRoundInfoOfRace" :collapse="true" :show-title="false"/>
       </div>
 
     </div>
@@ -47,10 +53,13 @@ const raceStatus = computed(() => {
 
 </template>
 <style scoped>
-.round-last-next-content {
+.round-last-next {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
   background-color: var(--card-bg-color);
   border: 1px solid var(--card-border-color);
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   border-radius: var(--border-radius);
 }
@@ -64,17 +73,36 @@ const raceStatus = computed(() => {
       color: var(--brand-color);
     }
   }
+
+  @media screen and (max-width: 770px) {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
 
-.content {
+.round-info {
+  display: block;
+  @media screen and (max-width: 770px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.race-view-content {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 10px;
+  @media screen and (max-width: 770px) {
+    grid-template-columns: 1fr;
+  }
+
 }
 
 .season-overview-content {
   width: 100%;
+  height: fit-content;
   padding: 20px;
   box-sizing: border-box;
   background-color: var(--card-bg-color);
