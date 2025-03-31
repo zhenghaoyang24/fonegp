@@ -3,6 +3,7 @@
 </script>
 
 <template>
+
   <nav class="navbar">
     <div class="nav-logo">
     </div>
@@ -15,18 +16,16 @@
 
     </div>
   </nav>
+
 </template>
 
 <style scoped>
 .navbar {
-  left: 0;
-  right: 0;
-  position: fixed;
   display: flex;
   align-items: center;
   padding: 10px;
   box-sizing: border-box;
-  margin: 10px auto;
+  margin: 0 auto;
   height: 70px;
   max-width: 500px;
   background-color: var(--card-bg-color);
@@ -44,7 +43,8 @@
 
 .navbar-link {
   display: flex;
-  >a {
+
+  > a {
     color: var(--text-s);
     padding: 0;
     margin: 0 7px;

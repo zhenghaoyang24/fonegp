@@ -10,13 +10,13 @@ const messages = [
 </script>
 
 <template>
-  <main class="not-found">
+  <div class="not-found">
     <div class="content">
       <h1>404</h1>
       <p>{{ messages[Math.floor(Math.random() * messages.length)] }}</p>
       <RouterLink to="/">返回发车格</RouterLink>
     </div>
-  </main>
+  </div>
 </template>
 
 <style scoped>

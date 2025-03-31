@@ -1,41 +1,53 @@
-export default {
-
-
-    getCurrentDateUtil() {
-        let now = new Date();
-        let year = now.getFullYear();
-        let month = now.getMonth() + 1;
-        let day = now.getDate();
-        const time = [now.getHours(),now.getMinutes(),now.getSeconds()] ;
-        let week = this.getWeekUtil(now.getDay());
-        return [year, month, day,time,week];
-    },
-    dealDateUtil(date:any) {
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1; // 月份从0开始，需要加1
-        const day = parseInt(date.getDate());
-        const time = [parseInt(date.getHours()),parseInt(date.getMinutes()),parseInt(date.getSeconds())] ;
-        const week = this.getWeekUtil(date.getDay());
-        return [year, month, day,time,week];
-    },
-    getWeekUtil(n:Number) {
-        if (n === 0) {
-            return "星期日"
-        } else if (n === 1) {
-            return "星期一";
-        } else if (n === 2) {
-            return "星期二";
-        } else if (n === 3) {
-            return "星期三";
-        } else if (n === 4) {
-            return "星期四";
-        } else if (n === 5) {
-            return "星期五";
-        } else if (n === 6) {
-            return "星期六";
-        }
-    },
-    getFullYear(): number {
-        return  new Date().getFullYear();
-    }
+interface DateParts {
+    month: number;
+    day: string;
 }
+
+export default {
+    // 格式化日期为 month ， day
+    getDateParts(dateStr: string): DateParts {
+        const [year, month, day] = dateStr.split('-');
+        return {
+            month: parseInt(month, 10),
+            day: day.padStart(2, '0')
+        };
+    },
+    // 格式化为月 日
+    formatDate(parts: DateParts): string {
+        return `${parts.month}月${parts.day}`;
+    },
+    /**
+     * 判断比赛日期状态
+     * @param dateString 格式为 YYYY-MM-DD 的日期字符串
+     * @returns 0: 已过去 | 1: 本周 | 2: 将来
+     */
+     raceStatusFormat(dateString: string): 0 | 1 | 2 {
+
+        // 解析输入日期
+        const targetDate = new Date(dateString);
+        targetDate.setHours(0, 0, 0, 0);
+        if (isNaN(targetDate.getTime())) {
+            throw new Error('Invalid date format. Expected YYYY-MM-DD');
+        }
+
+        // 获取当前日期（去除时间部分）
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // 计算本周的开始（周一）和结束（周日）
+        const dayOfWeek = today.getDay() || 7; // 将周日转换为7
+        const weekStart = new Date(today);
+        weekStart.setDate(today.getDate() - dayOfWeek + 1);
+
+        const weekEnd = new Date(weekStart);
+        weekEnd.setDate(weekStart.getDate() + 6);
+        // 日期比较
+        if (targetDate < weekStart) {
+            return 0; // 本周之前
+        } else if (targetDate > today && targetDate > weekEnd) {
+            return 2; // 本周之后
+        } else {
+            return 1; // 本周
+        }
+    }
+};
