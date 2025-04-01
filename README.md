@@ -1,25 +1,13 @@
-<div align="center">
-<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#ff2800" />
-            <stop offset="100%" stop-color="#ff5e3a" />
-        </linearGradient>
-    </defs>
-    <text x="50%" y="70%"
-          font-family="Arial, sans-serif"
-          font-weight="bold"
-          font-size="3em"
-          text-anchor="middle"
-          fill="url(#textGradient)">
-        Fonelify
-    </text>
-</svg>
-
-</div>
+<p align="center">   
+    <img src="https://fonelify.netlify.app/logo.svg">
+</p>
 
 <p align="center">
   🏎️ A simple but all ready <strong>Formula 1 Data Platform</strong>
+</p>
+
+<p align="center">
+  🏁 Made with by F1 fan for F1 fans ❤️ 🏁
 </p>
 
 <div align="center">
@@ -100,8 +88,3 @@ pnpm run build
 Special thanks to the open-source F1 data API:  
 [rafacv23/f1-api](https://github.com/rafacv23/f1-api)
 
----
-
-<div align="center">
-  🏁 Made with ❤️ by F1 fans for F1 fans 🏁
-</div>
