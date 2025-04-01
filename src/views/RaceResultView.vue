@@ -1,9 +1,11 @@
 <script setup lang="ts">
 
+import SlidingTab from "@/components/SlidingTab.vue";
 </script>
 
 <template>
   <div class="race-detail-content">
+    <SlidingTab/>
 
   </div>
 </template>
