@@ -1,7 +1,21 @@
 <div align="center">
-<svg width="300" height="120">
-  <text x="150" y="90" font-weight="900" text-anchor="middle" font-size="3em" fill="#ff2800">Fonelify</text>
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff2800" />
+            <stop offset="100%" stop-color="#ff5e3a" />
+        </linearGradient>
+    </defs>
+    <text x="50%" y="70%"
+          font-family="Arial, sans-serif"
+          font-weight="bold"
+          font-size="3em"
+          text-anchor="middle"
+          fill="url(#textGradient)">
+        Fonelify
+    </text>
 </svg>
+
 </div>
 
 <p align="center">
@@ -22,21 +36,25 @@
 This project is currently under development and some features are not yet fully developed.
 
 ### 🗓️ Live Schedule
+
 - Real-time race calendar with countdowns
 - Session times with local timezone conversion
 - Circuit maps & weather forecasts
 
 ### 📊 Post-Race Analytics
+
 - Interactive lap time comparisons
 - Tire strategy visualizations
 - Overtaking heatmaps
 
 ### 🏆 Rankings System
+
 - Driver standings with form indicators
 - Team championship progress tracker
 - Historical ranking comparisons (2010-2025)
 
 ### 🔍 Deep Profiles
+
 - Driver career timelines
 - Team technical specifications
 - Engine performance metrics
@@ -45,22 +63,24 @@ This project is currently under development and some features are not yet fully 
 
 ## 🛠 Tech Stack
 
-**Core Framework**  
+**Core Framework**
 
-[<img style="width: 19px;" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" width="40" alt="Vue">](https://vuejs.org/) Vue 3 Composition API
+[<img style="width: 19px;" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" width="40" alt="Vue">](https://vuejs.org/)
+Vue 3 Composition API
 
-**State Management**  
+**State Management**
 
-[<img style="width: 15px;" src="https://pinia.vuejs.org/logo.svg" width="40" alt="Pinia">](https://pinia.vuejs.org/) Pinia
+[<img style="width: 15px;" src="https://pinia.vuejs.org/logo.svg" width="40" alt="Pinia">](https://pinia.vuejs.org/)
+Pinia
 
-**Data Visualization**  
+**Data Visualization**
 
-[<img src="https://echarts.apache.org/zh/images/logo.png" width="80" alt="ECharts">](https://echarts.apache.org/) Apache ECharts
+[<img src="https://echarts.apache.org/zh/images/logo.png" width="80" alt="ECharts">](https://echarts.apache.org/) Apache
+ECharts
 
-**API Layer**  
+**API Layer**
 
 [<img src="https://axios-http.com/assets/logo.svg" width="80" alt="Axios">](https://axios-http.com/) Axios
-
 
 ## 🚧 Development
 
@@ -74,7 +94,6 @@ pnpm run dev
 # Build for production
 pnpm run build
 ```
-
 
 ## 🙏 Acknowledgments
 
