@@ -1,5 +1,7 @@
 <div align="center">
-  <h1 style="color: #ff2800; font-size: 3.5rem; margin: 0">Fonelify</h1>
+<svg width="300" height="120">
+  <text x="150" y="90" font-weight="900" text-anchor="middle" font-size="3em" fill="#ff2800">Fonelify</text>
+</svg>
 </div>
 
 <p align="center">
