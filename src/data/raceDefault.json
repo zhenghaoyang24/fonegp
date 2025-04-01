@@ -1,0 +1,61 @@
+[
+  {
+    "raceId": "australian_2025",
+    "championshipId": "f1_2025",
+    "raceName": null,
+    "schedule": {
+      "race": {
+        "date": "2025-03-16",
+        "time": null
+      },
+      "qualy": {
+        "date": "2025-03-15",
+        "time": null
+      },
+      "fp1": {
+        "date": "2025-03-14",
+        "time": null
+      },
+      "fp2": {
+        "date": "2025-03-14",
+        "time": null
+      },
+      "fp3": {
+        "date": "2025-03-15",
+        "time": null
+      },
+      "sprintQualy": {
+        "date": null,
+        "time": null
+      },
+      "sprintRace": {
+        "date": null,
+        "time": null
+      }
+    },
+    "laps": null,
+    "round": 1,
+    "url": null,
+    "fast_lap": {
+      "fast_lap": null,
+      "fast_lap_driver_id": null,
+      "fast_lap_team_id": null
+    },
+    "circuit": {
+      "circuitId": "albert_park",
+      "circuitName": "Albert Park Circuit",
+      "country": "Australia",
+      "city": "Melbourne",
+      "circuitLength": "5278km",
+      "lapRecord": "1:19:813",
+      "firstParticipationYear": 1996,
+      "corners": 14,
+      "fastestLapDriverId": "leclerc",
+      "fastestLapTeamId": "ferrari",
+      "fastestLapYear": 2024,
+      "url": "https://en.wikipedia.org/wiki/Albert_Park_Circuit"
+    },
+    "winner": null,
+    "teamWinner": null
+  }
+]

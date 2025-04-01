@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import infoCnFormatUtil from "@/utils/infoCnFormatUtil.ts";
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
 
 const seasonData = seasonDataStorage();

@@ -2,12 +2,13 @@ import {ref, computed} from 'vue'
 import {defineStore} from 'pinia'
 import axios from "axios";
 import {api} from "@/utils/api.ts";
+import type {Race, RaceArray} from "@/interface/race.ts";
+import raceDefault from '@/data/raceDefault.json'
 
 export const seasonDataStorage = defineStore(
     'seasonDataStorage', () => {
 
-
-        const currentSeasonInfoOfAllRaces = ref<Array<Object>>()
+        const currentSeasonInfoOfAllRaces = ref<RaceArray>(raceDefault)
         const currentRoundStore = ref<number>(0)
         const currentSeasonStore = ref<number>(0)
         const totalRoundStore = ref<number>(0)

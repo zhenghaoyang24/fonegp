@@ -44,8 +44,8 @@ const fetchDate = async () => {
   <header class="header">
     <Navbar/>
   </header>
-  <main class="main no-data-view" v-if="loadingStatus">
-    别急，正在暖胎 ...
+  <main class="no-data-view" v-if="loadingStatus">
+    正在加载调校数据 ...
   </main>
   <main class="main" v-else>
     <RouterView/>
@@ -63,7 +63,7 @@ const fetchDate = async () => {
   background-color: var(--bg-color);
 }
 .no-data-view{
-  height: 70vh;
+  height: 67vh;
   margin: 0 auto;
   display: flex;
   justify-content: center;

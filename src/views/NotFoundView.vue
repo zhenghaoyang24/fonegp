@@ -2,10 +2,7 @@
 import { RouterLink } from 'vue-router'
 
 const messages = [
-  "Oops! 你进站太早了",
-  "这圈跑丢了...",
-  "Check Engine! 页面异常",
-  "需要虚拟安全车带路吗？"
+  "Ops，看起来赛车出了些问题，我们要退赛了，请把赛车开回维修区。",
 ]
 </script>
 
@@ -13,15 +10,14 @@ const messages = [
   <div class="not-found">
     <div class="content">
       <h1>404</h1>
-      <p>{{ messages[Math.floor(Math.random() * messages.length)] }}</p>
-      <RouterLink to="/">返回发车格</RouterLink>
+      <p>{{ messages[0]}}</p>
+      <RouterLink to="/">返回维修区</RouterLink>
     </div>
   </div>
 </template>
 
 <style scoped>
 .not-found {
-  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +25,7 @@ const messages = [
   color: var(--text-p);
   text-align: center;
   padding: 2rem;
+  height: 50vh;
 }
 
 .content {

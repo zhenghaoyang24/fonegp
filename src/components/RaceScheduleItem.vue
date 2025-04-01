@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import {Icon} from '@iconify/vue'
-import {computed, createElementBlock, ref} from "vue";
+import {computed, ref} from "vue";
 import dateUtils from "@/utils/dateUtils.ts";
-import infoCnFormatUtil from "@/utils/infoCnFormatUtil.ts";
 import circuit from '@/data/circuit.json'
 import RaceStatusCom from "@/components/RaceStatusCom.vue";
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
@@ -73,7 +72,7 @@ const circuitInfo = ref<any>(circuit.find(item => {
   <div class="race-item">
     <div class="race-item-overview" @click="collapseRaceDetail" v-if="showTitle">
       <span>{{ raceSchedule }}</span>
-      <span>{{ infoCnFormatUtil.grandPrixFormatUtil(race.raceName) }}</span>
+      <span>{{ circuitInfo.raceName_zh }}</span>
       <span><RaceStatusCom :propsData="raceDate"/></span>
       <span class="race-item-collapse-icon" ref="collapseIconElement"> <Icon icon="ooui:collapse"/> </span>
     </div>
@@ -141,17 +140,21 @@ const circuitInfo = ref<any>(circuit.find(item => {
 .race-item-detail {
   padding: 10px 20px;
   cursor: auto;
+
   .race-item-detail-basic {
     display: grid;
     grid-template-columns: 3fr 1fr;
   }
-  .race-item-detail-result{
+
+  .race-item-detail-result {
     padding: 7px 0;
-    >a{
-      color: var(--text-s)!important;
+
+    > a {
+      color: var(--text-s) !important;
       font-size: 0.9em;
-      &:hover{
-        color: var(--brand-color)!important;
+
+      &:hover {
+        color: var(--brand-color) !important;
       }
     }
   }
@@ -182,7 +185,6 @@ const circuitInfo = ref<any>(circuit.find(item => {
 
 .race-item-detail-track {
   display: block;
-
   > div {
     padding: 4px 0;
     display: flex;
