@@ -6,22 +6,22 @@ const router = createRouter({
     routes: [
         {
             path: '/', redirect: '/race', meta: {
-                title: '比赛 | F1'
+                title: '比赛 | Fonelify'
             }
         },
         {
             path: '/race', name: 'race', component: RaceView, meta: {
-                title: '比赛 | F1'
+                title: '比赛 | Fonelify'
             }
         },
         {
             path: '/rank', name: 'rank', component: () => import('../views/RankView.vue'), meta: {
-                title: '排行 | F1'
+                title: '排行 | Fonelify'
             }
         },
         {
             path: '/schedule', name: 'schedule', component: () => import('../views/ScheduleView.vue'), meta: {
-                title: '赛程 | F1'
+                title: '赛程 | Fonelify'
             }
         },
         {
@@ -30,7 +30,7 @@ const router = createRouter({
                 {path: ':round', component: () => import('../views/RaceResultView.vue')}
             ],
             meta: {
-                title: '结果 | F1'
+                title: '结果 | Fonelify'
             }
         },
         {
@@ -38,7 +38,7 @@ const router = createRouter({
             path: '/:pathMatch(.*)*',
             component: () => import('../views/NotFoundView.vue'),
             meta: {
-                title: '404 | F1'
+                title: '404 | Fonelify'
             }
         }
     ],
