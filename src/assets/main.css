@@ -1,8 +1,8 @@
 @import './theme.css';
 *{
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
-html,body{
+html ,body{
   ::-webkit-scrollbar
   {
     width:6px;

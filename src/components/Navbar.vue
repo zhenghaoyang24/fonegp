@@ -12,6 +12,7 @@ import router from "@/router";
     <div class="navbar-link">
       <RouterLink to="/race">比赛</RouterLink>
       <RouterLink to="/schedule">赛程</RouterLink>
+      <RouterLink to="/result">结果</RouterLink>
       <RouterLink to="/rank">排行</RouterLink>
     </div>
     <div class="navbar-btn">

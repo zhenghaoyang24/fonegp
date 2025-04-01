@@ -3,14 +3,14 @@ import {RouterLink, RouterView} from 'vue-router'
 import Navbar from "@/components/Navbar.vue";
 
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
+const seasonData = seasonDataStorage();
 import {onBeforeMount, onMounted, ref} from "vue";
 import Footer from "@/components/Footer.vue";
 
-const seasonData = seasonDataStorage();
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true)
-onBeforeMount(async () => {
-  await fetchDate()
+onBeforeMount( () => {
+  fetchDate()
 })
 
 const fetchDate = async () => {
@@ -20,13 +20,13 @@ const fetchDate = async () => {
     const results = await Promise.all([
       seasonData.refreshCurrentSeasonInfo(),
       seasonData.refreshLastRoundInfo(),
-      seasonData.refreshNextRoundInfo()
+      seasonData.refreshNextRoundInfo(),
     ]);
     // 检查所有结果是否为 true
     if (results.every(result => result)) {
       setTimeout(()=>{
         loadingStatus.value = false;  // 显示数据加载
-      },1000)
+      },800)
     } else {
       // 处理部分请求失败的情况
       console.error('部分请求未成功');

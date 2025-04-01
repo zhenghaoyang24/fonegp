@@ -25,6 +25,15 @@ const router = createRouter({
             }
         },
         {
+            path: '/result', name: 'result', component: () => import('../views/RaceResultView.vue'),
+            children: [
+                {path: ':round', component: () => import('../views/RaceResultView.vue')}
+            ],
+            meta: {
+                title: '结果 | F1'
+            }
+        },
+        {
             name: '404',
             path: '/:pathMatch(.*)*',
             component: () => import('../views/NotFoundView.vue'),
