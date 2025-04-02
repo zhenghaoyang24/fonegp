@@ -1,7 +1,7 @@
 import {ref, computed} from 'vue'
 import {defineStore} from 'pinia'
 import axios from "axios";
-import {api} from "@/utils/api.ts";
+import {F1_API} from "@/utils/api.ts";
 import type {Race, RaceArray} from "@/interface/race.ts";
 import raceDefault from '@/data/raceDefault.json'
 
@@ -17,7 +17,7 @@ export const seasonDataStorage = defineStore(
 
         async function refreshLastRoundInfo():Promise<boolean> {
             try{
-                const res=  await axios.get(api.lastRoundApi)
+                const res=  await axios.get(F1_API.lastRoundApi)
                 lastRoundInfoOfRace.value = res.data.race[0]
                 currentRoundStore.value = res.data.round
                 return true
@@ -28,7 +28,7 @@ export const seasonDataStorage = defineStore(
         }
         async function refreshNextRoundInfo(): Promise<boolean> {
             try{
-                const res=  await axios.get(api.nextRoundApi)
+                const res=  await axios.get(F1_API.nextRoundApi)
                 nextRoundInfoOfRace.value = res.data.race[0]
                 return true
             }catch (error){
@@ -39,7 +39,7 @@ export const seasonDataStorage = defineStore(
 
         async function refreshCurrentSeasonInfo(): Promise<boolean> {
             try{
-                const res=  await axios.get(api.currentSeasonApi)
+                const res=  await axios.get(F1_API.currentSeasonApi)
                 currentSeasonInfoOfAllRaces.value = res.data.races
                 totalRoundStore.value = res.data.total
                 currentSeasonStore.value = res.data.season

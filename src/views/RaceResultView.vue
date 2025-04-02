@@ -6,6 +6,7 @@ const route = useRoute()
 import {storeToRefs} from "pinia";
 import RaceDetailOverviewTab from "@/components/RaceDetailOverviewTab.vue";
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
+import RaceResultPanel from "@/components/RaceResultPanel.vue";
 
 const seasonData = seasonDataStorage();
 
@@ -47,6 +48,7 @@ function changeRaceRoundFn(delta:number){
 <template>
   <div class="race-detail-content">
     <RaceDetailOverviewTab @changeRaceRoundEmit="changeRaceRoundFn" :round="selectRound"/>
+    <RaceResultPanel :the-round="selectRound"/>
   </div>
 </template>
 
