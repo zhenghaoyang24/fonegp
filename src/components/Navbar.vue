@@ -7,7 +7,7 @@ import router from "@/router";
 
   <nav class="navbar">
     <div class="nav-logo" @click="()=> router.push('/race')">
-      Fonetraxx
+      FoneGP
     </div>
     <div class="navbar-link">
       <RouterLink to="/race">比赛</RouterLink>
