@@ -1,5 +1,5 @@
 <p align="center">   
-    <img src="https://fonetraxx.netlify.app/logo.svg">
+    <img src="https://fonegp.netlify.app/logo.svg">
 </p>
 
 <p align="center">

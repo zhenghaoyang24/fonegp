@@ -44,9 +44,6 @@ import router from "@/router";
   font-weight: 900;
   font-size: 1.2em;
   margin: 0 10px;
-/*  background-image: url("@/assets/logo.svg");
-  background-size: cover;
-  background-repeat: no-repeat;*/
 }
 
 .navbar-link {
