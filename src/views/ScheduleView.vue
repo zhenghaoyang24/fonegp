@@ -3,10 +3,13 @@
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
 import {storeToRefs} from "pinia";
 import RaceScheduleItem from "@/components/RaceScheduleItem.vue";
+import {onMounted} from "vue";
 
 const seasonData = seasonDataStorage();
 const {currentSeasonInfoOfAllRaces} = storeToRefs(seasonData)
-
+onMounted(()=>{
+  console.log(currentSeasonInfoOfAllRaces.value)
+})
 </script>
 
 <template>

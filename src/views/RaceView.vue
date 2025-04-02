@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
-
 const seasonData = seasonDataStorage();
 import {storeToRefs} from 'pinia'
 import {computed, onBeforeMount, onMounted, ref} from "vue";
@@ -16,23 +15,44 @@ const {
   lastRoundInfoOfRace,
   nextRoundInfoOfRace,
 } = storeToRefs(seasonData)
-// 上下轮比赛
-const lastRoundId = ref<string>(lastRoundInfoOfRace.value.circuit.circuitId)
-const lastRace = ref<any>(circuit.find(item =>{
-  if (item.circuitId === lastRoundId.value)
-    return item
-}))
-const lastRaceDate = ref<string>(lastRoundInfoOfRace.value.schedule.race.date)
-// 下轮比赛
-const nextRoundId = ref<string>(nextRoundInfoOfRace.value.circuit.circuitId)
-const nextRace = ref<any>(circuit.find(item =>{
-  if (item.circuitId === nextRoundId.value)
-    return item
-}))
-const nextRaceDate = ref<string>(nextRoundInfoOfRace.value.schedule.race.date)
+// 上轮比赛
+// id
+const lastRoundId = computed(()=>{
+  return lastRoundInfoOfRace.value.circuit.circuitId
+})
+// 比赛基本信息
+const lastRace = computed(() => {
+  return circuit.find(item =>{
+    if (item.circuitId === lastRoundId.value)
+      return item
+  })
+})
+// 比赛时间 Date
+const lastRaceDate = computed(()=>{
+  return dateUtils.convertUTCtoCST(lastRoundInfoOfRace.value.schedule.race.date,lastRoundInfoOfRace.value.schedule.race.time)
+})
+
+/**
+ * 下轮比赛
+ */
+// id
+const nextRoundId = computed(()=>{
+  return nextRoundInfoOfRace.value.circuit.circuitId
+})
+// 比赛基本信息
+const nextRace = computed(() => {
+  return circuit.find(item =>{
+    if (item.circuitId === nextRoundId.value)
+      return item
+  })
+})
+// 比赛时间 Date
+const nextRaceDate = computed(()=>{
+  return dateUtils.convertUTCtoCST(nextRoundInfoOfRace.value.schedule.race.date,nextRoundInfoOfRace.value.schedule.race.time)
+})
 // 本周比赛情况 是否为比赛周
 const theWeekRaceStatus = computed(() => {
-  return dateUtils.raceStatusFormat(nextRaceDate.value);
+  return dateUtils.checkWeek(nextRaceDate.value);
 });
 </script>
 
@@ -45,21 +65,21 @@ const theWeekRaceStatus = computed(() => {
         <p>已进行 <span>{{ currentRoundStore }}</span> 场比赛</p>
       </div>
       <div class="round-info">
-        <p>上一站：{{lastRace.country_zh }}</p>
-        <p>下一站：{{ nextRace.country_zh }}</p>
+        <p>上一站：{{lastRace?.country_zh }}</p>
+        <p>下一站：{{ nextRace?.country_zh }}</p>
       </div>
       <div class="this-week">
-        本周<span>{{ theWeekRaceStatus === 1 ? '是' : '不是' }}</span>比赛周！
+        本周<span>{{ theWeekRaceStatus === 'this' ? '是' : '不是' }}</span>比赛周！
       </div>
     </div>
     <div class="round-last-next">
-      <div class="round-last">
-        <div class="round-title"><h3>上一场</h3> <RaceStatusCom :props-data="lastRaceDate"/> </div>
-        <RaceScheduleItem :race="lastRoundInfoOfRace" :collapse="true" :show-title="false"/>
-      </div>
       <div class="round-next">
         <div class="round-title"><h3>下一场</h3> <RaceStatusCom :props-data="nextRaceDate"/> </div>
         <RaceScheduleItem :race="nextRoundInfoOfRace" :collapse="true" :show-title="false"/>
+      </div>
+      <div class="round-last">
+        <div class="round-title"><h3>上一场</h3> <RaceStatusCom :props-data="lastRaceDate"/> </div>
+        <RaceScheduleItem :race="lastRoundInfoOfRace" :collapse="true" :show-title="false"/>
       </div>
     </div>
   </div>

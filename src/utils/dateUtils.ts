@@ -4,50 +4,43 @@ interface DateParts {
 }
 
 export default {
-    // 格式化日期为 month ， day
-    getDateParts(dateStr: string): DateParts {
-        const [year, month, day] = dateStr.split('-');
-        return {
-            month: parseInt(month, 10),
-            day: day.padStart(2, '0')
-        };
+    convertUTCtoCST(date:string,time:string){
+        return  new Date(date + "T" + time);
     },
-    // 格式化为月 日
-    formatDate(parts: DateParts): string {
-        return `${parts.month}月${parts.day}`;
+
+    // 获取 x月x日
+    getMonthDay(date:Date){
+        return `${date.getMonth()+1}月${date.getDate()}日`
     },
-    /**
-     * 判断比赛日期状态
-     * @param dateString 格式为 YYYY-MM-DD 的日期字符串
-     * @returns 0: 已过去 | 1: 本周 | 2: 将来
-     */
-     raceStatusFormat(dateString: string): 0 | 1 | 2 {
+    // 获取 x年x月x日
+    getYearMonthDate(date:Date){
+        return   `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`
+    },
+    getHoursMinutes(date:Date){
+        return date.getHours() + ":" + (date.getMinutes()===0? '00':date.getMinutes());
+    },
 
-        // 解析输入日期
-        const targetDate = new Date(dateString);
-        targetDate.setHours(0, 0, 0, 0);
-        if (isNaN(targetDate.getTime())) {
-            throw new Error('Invalid date format. Expected YYYY-MM-DD');
-        }
+    // 检查传入日期是否是本周
+    checkWeek(date_:Date): 'before' | 'this' | 'after' {
+        const now = new Date();
+        const dateMonday = this.getMonday(date_);
+        const nowMonday = this.getMonday(now);
 
-        // 获取当前日期（去除时间部分）
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
-        // 计算本周的开始（周一）和结束（周日）
-        const dayOfWeek = today.getDay() || 7; // 将周日转换为7
-        const weekStart = new Date(today);
-        weekStart.setDate(today.getDate() - dayOfWeek + 1);
-
-        const weekEnd = new Date(weekStart);
-        weekEnd.setDate(weekStart.getDate() + 6);
-        // 日期比较
-        if (targetDate < weekStart) {
-            return 0; // 本周之前
-        } else if (targetDate > today && targetDate > weekEnd) {
-            return 2; // 本周之后
+        if (dateMonday < nowMonday) {
+            return 'before';
+        } else if (dateMonday.getTime() === nowMonday.getTime()) {
+            return 'this';
         } else {
-            return 1; // 本周
+            return 'after';
         }
-    }
+    },
+    // 获取日期的星期一
+    getMonday(date_:Date) {
+        const date = new Date(date_);
+        const day = date.getDay();
+        const daysToSubtract = day === 0 ? 6 : day - 1;
+        const monday = new Date(date.getTime() - daysToSubtract * 86400000);
+        monday.setHours(0, 0, 0, 0);
+        return monday;
+    },
 };

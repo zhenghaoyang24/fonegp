@@ -1,0 +1,38 @@
+[
+  {
+    "type": "fp1",
+    "race_en": "fp1",
+    "race_zh": "一练"
+  },
+  {
+    "type": "fp2",
+    "race_en": "fp2",
+    "race_zh": "二练"
+  },
+  {
+    "type": "fp3",
+    "race_en": "fp3",
+    "race_zh": "三连"
+  },
+  {
+    "type": "qualy",
+    "race_en": "qualy",
+    "race_zh": "排位赛"
+  },
+  {
+    "type": "race",
+    "race_en": "race",
+    "race_zh": "正赛"
+  },
+  {
+    "type": "sprintQualy",
+    "race_en": "sprintQualy",
+    "race_zh": "冲刺排位赛"
+  },
+  {
+    "type": "sprintRace",
+    "race_en": "sprintRace",
+    "race_zh": "冲刺赛"
+  }
+]
+
