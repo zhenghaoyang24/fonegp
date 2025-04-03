@@ -8,7 +8,7 @@ import {Icon} from '@iconify/vue'
     Designed by <a href="https://github.com/zhenghaoyang24" target="_blank">&nbsp;zhenghaoyang24</a>
   </div>
   <div class="footer-link">
-    <a href="https://github.com/zhenghaoyang24/fonelify"> <Icon icon="mdi:github" /> </a>
+    <a href="https://github.com/zhenghaoyang24/fonegp"> <Icon icon="mdi:github" /> </a>
     <a href="mailto:zhenghaoyang24@foxmail.com"> <Icon icon="ic:baseline-email" /> </a>
   </div>
 </footer>
