@@ -1,19 +1,32 @@
 <script setup lang="ts">
 import {RouterLink, RouterView} from 'vue-router'
 import Navbar from "@/components/Navbar.vue";
-
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
 const seasonData = seasonDataStorage();
 import {onBeforeMount, onMounted, ref} from "vue";
 import Footer from "@/components/Footer.vue";
+import {storeToRefs} from "pinia";
+import dateUtils from "@/utils/dateUtils.ts";
+// 获取 刷新时间
+const {
+  lastFetchTime
+} = storeToRefs(seasonData)
 
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true)
 onBeforeMount( () => {
-  fetchDate()
+  if (dateUtils.checkHourBefore(new Date(lastFetchTime.value) )){  //如果是一小时前刷新，则重新获取
+    fetchSeasonBasicDate()
+    console.log("刷新数据")
+  }else{
+    setTimeout(()=>{
+      loadingStatus.value = false;  // 显示数据加载
+    },800)
+    console.log("没有刷新数据")
+  }
 })
 
-const fetchDate = async () => {
+const fetchSeasonBasicDate = async () => {
   loadingStatus.value = true;
   try {
     // 并行执行三个请求
@@ -24,6 +37,7 @@ const fetchDate = async () => {
     ]);
     // 检查所有结果是否为 true
     if (results.every(result => result)) {
+      seasonData.refreshLastFetchTime()  //刷新时间
       setTimeout(()=>{
         loadingStatus.value = false;  // 显示数据加载
       },800)

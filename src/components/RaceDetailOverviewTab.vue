@@ -1,33 +1,19 @@
 <script setup lang="ts">
-import {storeToRefs} from "pinia";
-import {seasonDataStorage} from "@/stores/seasonStore.ts";
 import {onMounted, ref, watch} from "vue";
 import circuit from "@/data/circuit.json";
-import RaceScheduleItem from "@/components/RaceScheduleItem.vue";
 import {Icon} from "@iconify/vue";
 
-const seasonData = seasonDataStorage();
 // 获取 所有 比赛信息
-const {
-  currentSeasonInfoOfAllRaces,
-} = storeToRefs(seasonData)
 const props = defineProps({
   round: {
     type: Number,
     required: true
   },
+  circuitId: {
+    type: String,
+    required: true
+  },
 })
-// 获取选中比赛的 circuitId
-// 获取基本信息
-const theRaceInfo = ref()
-
-function getCircuitId() {
-  const theItem = currentSeasonInfoOfAllRaces.value.find(item => {
-    return item.round === props.round
-  })
-  theRaceInfo.value = theItem
-  return theItem?.circuit.circuitId
-}
 
 // 获取选中比赛的 基本信息
 const selectRaceInfo = ref()
@@ -40,13 +26,13 @@ function getSelectRaceInfo(circuitId: any) {
 
 // 初始时 获取数据
 onMounted(() => {
-  selectRaceInfo.value = getSelectRaceInfo(getCircuitId())
+  selectRaceInfo.value = getSelectRaceInfo(props.circuitId)
 })
 
 // props 改变时 获取数据
 watch(() => props.round, (_new, _old) => {
   // props 改变 刷新数据
-  selectRaceInfo.value = getSelectRaceInfo(getCircuitId())
+  selectRaceInfo.value = getSelectRaceInfo(props.circuitId)
 })
 
 // 定义 emit类型

@@ -29,7 +29,7 @@ This project is currently under development and some features are not yet fully 
 - Session times with local timezone conversion
 - Circuit maps & weather forecasts
 
-### 📊 Post-Race Analytics
+### 📊 Post-RaceArray Analytics
 
 - Interactive lap time comparisons
 - Tire strategy visualizations

@@ -7,9 +7,6 @@ import {onMounted} from "vue";
 
 const seasonData = seasonDataStorage();
 const {currentSeasonInfoOfAllRaces} = storeToRefs(seasonData)
-onMounted(()=>{
-  console.log(currentSeasonInfoOfAllRaces.value)
-})
 </script>
 
 <template>

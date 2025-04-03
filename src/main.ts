@@ -2,7 +2,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persistedstate'
-
+import i18n from '@/language/index'
 
 import App from './App.vue'
 import router from './router'
@@ -17,4 +17,5 @@ const app = createApp(App)
 
 app.use(createPinia().use(piniaPersist))
 app.use(router)
+app.use(i18n)
 app.mount('#app')

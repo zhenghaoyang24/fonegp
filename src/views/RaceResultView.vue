@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onBeforeMount, ref} from "vue";
+import {onBeforeMount, ref, watch} from "vue";
 import {useRoute} from 'vue-router'
 
 const route = useRoute()
@@ -12,7 +12,8 @@ const seasonData = seasonDataStorage();
 
 // 选中 渲染的场次
 const selectRound = ref<number>(0)
-
+// 选中 渲染的场次 id
+const selectRoundCircuitId = ref<string>('no-circuitId')
 // 获取 动态参数 限制数据
 onBeforeMount(() => {
   selectRound.value = limitRound(route.params.round)
@@ -20,6 +21,7 @@ onBeforeMount(() => {
 
 // 获取 当前场次，最大场次数
 const {
+  currentSeasonInfoOfAllRaces,
   currentRoundStore,
   totalRoundStore
 } = storeToRefs(seasonData)
@@ -39,7 +41,15 @@ const limitRound = (round: any) => {
     }
   }
 }
+// 监听 selectRound，改变 selectRoundCircuitId
+watch(()=>selectRound.value,(_new)=>{
+  const theItem = currentSeasonInfoOfAllRaces.value.find(item => {
+    return item.round === _new
+  })
+  selectRoundCircuitId.value = theItem?.circuit.circuitId? theItem?.circuit.circuitId : 'no-circuitId'
+})
 
+// 按钮切换
 function changeRaceRoundFn(delta:number){
   selectRound.value = limitRound(delta)
 }
@@ -47,8 +57,8 @@ function changeRaceRoundFn(delta:number){
 
 <template>
   <div class="race-detail-content">
-    <RaceDetailOverviewTab @changeRaceRoundEmit="changeRaceRoundFn" :round="selectRound"/>
-    <RaceResultPanel :the-round="selectRound"/>
+    <RaceDetailOverviewTab @changeRaceRoundEmit="changeRaceRoundFn" :round="selectRound" :circuitId="selectRoundCircuitId"/>
+    <RaceResultPanel :the-round="selectRound" :circuit-id="selectRoundCircuitId"/>
   </div>
 </template>
 

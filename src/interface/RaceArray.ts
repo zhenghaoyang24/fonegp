@@ -1,16 +1,17 @@
-interface RaceScheduleEvent {
+// 比赛类型 时间日程 对象
+interface RaceScheduleDate {
     date: string | null;
     time: string | null;
 }
 
 interface RaceSchedule {
-    race: RaceScheduleEvent;
-    qualy: RaceScheduleEvent;
-    fp1: RaceScheduleEvent;
-    fp2: RaceScheduleEvent;
-    fp3: RaceScheduleEvent;
-    sprintQualy: RaceScheduleEvent;
-    sprintRace: RaceScheduleEvent;
+    race: RaceScheduleDate;
+    qualy: RaceScheduleDate;
+    fp1: RaceScheduleDate;
+    fp2: RaceScheduleDate;
+    fp3: RaceScheduleDate;
+    sprintQualy: RaceScheduleDate;
+    sprintRace: RaceScheduleDate;
 }
 
 interface FastLap {
