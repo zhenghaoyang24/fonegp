@@ -16,7 +16,7 @@ import {Icon} from '@iconify/vue'
 
 <style scoped>
 .footer{
-  margin-top: 100px;
+  margin-top: 230px;
   border-top: 1px solid var(--card-border-color);
   width: 100%;
 }

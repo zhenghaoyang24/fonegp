@@ -2,8 +2,14 @@
 import type {RaceScheduleTypeDate} from "@/interface/RaceScheduleArray.ts";
 import dateUtils from "@/utils/dateUtils.ts";
 import raceUtils from "@/utils/raceUtils.ts";
-import {onBeforeMount, ref, watch} from "vue";
+import {onBeforeMount, onMounted, ref, watch} from "vue";
 import {Icon} from "@iconify/vue";
+import axios from "axios";
+import {F1_API} from "@/utils/api.ts";
+import {seasonDataStorage} from "@/stores/seasonStore.ts";
+import drivers from '@/data/driver.json'
+
+const seasonData = seasonDataStorage();
 
 const props = defineProps({
   theRound: {
@@ -21,6 +27,7 @@ const props = defineProps({
 })
 onBeforeMount(() => {
   getPropsDate()
+  fetchRaceResultApi(seasonData.currentSeasonStore, round.value, type.value)
 })
 // 定义 props 的响应式数据
 const round = ref<Number>(1)
@@ -50,6 +57,7 @@ watch(() => props.theRound, (newValue, oldValue) => {
   // 设置新的定时器
   timeoutId = setTimeout(() => {
     getPropsDate()
+    fetchRaceResultApi(seasonData.currentSeasonStore, round.value, type.value)
   }, 500);
 });
 // 折叠 图标 ref 绑定
@@ -68,6 +76,56 @@ const collapseRaceDetail = () => {
       collapseIconElement.value.style.transform = "rotateZ(180deg)"
   }
 }
+
+// api 结果关键字定义
+const api_result_key = {
+  fp1: 'fp1Results',
+  fp2: 'fp2Results',
+  fp3: 'fp3Results',
+  qualy: 'qualyResults',
+  sprintQualy: 'sprintQualyResults',
+  sprintRace: 'sprintRaceResults',
+  race: 'results',
+} as const
+// 定义类型
+type SessionKey = typeof api_result_key;
+
+// 返回对应类型
+function getResultKey(key: string): string {
+  return api_result_key[key as keyof SessionKey];
+}
+
+//  本场比赛 单项结果
+const theRaceTypeResult = ref<any>()
+
+// 获取比赛详细数据
+function fetchRaceResultApi(year: Number, round: Number, type: string) {
+  const apiUrl = F1_API.raceResultApi(year, round, type)
+  raceResultFetchIng.value = true //切换状态
+  raceResultFetchError.value = "别急，我们还在换胎。"
+  axios.get(apiUrl).then(response => {
+    raceResultFetchIng.value = false //切换状态
+    theRaceTypeResult.value = response.data.races[getResultKey(type)]
+  }).catch(error => {
+    if (error.message)
+      raceResultFetchError.value = "这场比赛还没开始。"
+    else {
+      raceResultFetchError.value = "糟糕，我们的换胎遇到了一些麻烦。"
+      console.error(error)
+    }
+  })
+}
+
+// 获取中文名
+function getDriverNameZh(driverId: string) {
+  return drivers.find(driver => driver.driverId === driverId)?.surname_zh
+}
+
+// 获取状态
+const raceResultFetchIng = ref<boolean>(true)
+// 失败提示信息
+const raceResultFetchError = ref<string>("别急，正在干扰 ToTo 的无线电。")
+
 </script>
 
 <template>
@@ -78,7 +136,23 @@ const collapseRaceDetail = () => {
       <span class="item-collapse-icon" ref="collapseIconElement"> <Icon icon="ooui:collapse"/> </span>
     </div>
     <div class="type-result-detail" v-show="!collapseStatus">
-      详细数据
+      <div class="type-result-fetch-error" v-if="raceResultFetchIng">
+        {{raceResultFetchError}}
+      </div>
+      <div class="type-result-fetch-success" v-else>
+        <div class="result-item">
+          <div class="result-item-title grid-1-1-1">
+            <span>排名</span>
+            <span>车手</span>
+            <span>差距</span>
+          </div>
+          <div class="result-item-content grid-1-1-1"  v-for="(item ,index) in theRaceTypeResult" :key="index">
+            <span>{{index+1}}</span>
+            <span>{{ getDriverNameZh(item.driver.driverId) }}</span>
+            <span>Todo</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -94,7 +168,8 @@ const collapseRaceDetail = () => {
   padding: 15px 0;
 
 }
-.item-collapse-icon{
+
+.item-collapse-icon {
   color: var(--text-s);
   position: absolute;
   display: flex;
@@ -106,7 +181,30 @@ const collapseRaceDetail = () => {
   transform-origin: center;
   transition: transform .3s;
 }
-.type-result-detail{
-  padding: 10px;
+
+.type-result-detail {
+  padding: 0 10px;
+}
+
+.type-result-fetch-error {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  color: var(--brand-color);
+}
+.result-item{
+  display: block;
+}
+.result-item-title{
+  padding: 10px 0;
+  color: var(--text-s);
+}
+.grid-1-1-1{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  >span{
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>

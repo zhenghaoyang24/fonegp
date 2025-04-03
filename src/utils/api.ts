@@ -9,11 +9,14 @@ F1_API = {
     currentSeasonApi: `${F1_API_BASE}/current`,
     lastRoundApi: `${F1_API_BASE}/current/last`,
     nextRoundApi: `${F1_API_BASE}/current/next`,
-    raceResultApi: function (round:string, type:"fp1" | "fp2" | "fp3" | "race" | "qualy" ,spring:boolean | null){
-        if (spring){
-            return `${F1_API_BASE}/2025/${round}/spring/${type}`
+    raceResultApi: function (year:Number, round:Number, type:"fp1" | "fp2" | "fp3" | "race" | "qualy" | "sprintQualy" | "sprintRace"){
+        if (type !== 'sprintQualy' && type !== 'sprintRace'){
+            return `${F1_API_BASE}/${year}/${round}/${type}`
         }else{
-            return `${F1_API_BASE}/2025/${round}/${type}`
+            if (type === "sprintQualy")
+                return `${F1_API_BASE}/${year}/${round}/sprint/qualy`
+            if (type === 'sprintRace')
+                return `${F1_API_BASE}/${year}/${round}/sprint/race`
         }
     }
 }
