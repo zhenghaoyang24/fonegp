@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import {Icon} from '@iconify/vue'
-import {computed, onBeforeMount, ref} from "vue";
+import {computed, ref} from "vue";
 import dateUtils from "@/utils/dateUtils.ts";
 import circuit from '@/data/circuit.json'
 import RaceStatusCom from "@/components/RaceStatusCom.vue";
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
 import {storeToRefs} from "pinia";
-import raceTypeJson from '@/data/raceType.json'
+import raceUtils from "../utils/raceUtils.ts";
+
 const seasonData = seasonDataStorage();
 const {
   currentRacesScheduleDate,
@@ -26,6 +27,19 @@ const props = defineProps({
     default: true
   }
 })
+// 本轮id
+const circuitId = computed(() => {
+  return props.race.circuit.circuitId
+})
+// 本轮的日程
+const theRaceSchedule = computed(() => {
+  return currentRacesScheduleDate.value.races.find(item => {
+    if (item.circuitId === circuitId.value)
+      return item
+  })?.scheduleDate
+})
+
+
 // 日期
 const raceStartEndDateString = computed(() => {
   const fp1DateString = props.race.schedule.race.date;
@@ -34,8 +48,8 @@ const raceStartEndDateString = computed(() => {
     return '待公布'
   else {
     //  转换时间
-    const fp1_local_time = dateUtils.getMonthDay(dateUtils.convertUTCtoCST(fp1DateString, props.race.schedule.fp1.time))
-    const race_local_time = dateUtils.getMonthDay(dateUtils.convertUTCtoCST(raceDateString, props.race.schedule.race.time))
+    const fp1_local_time = scheduleFormatDate(fp1DateString, props.race.schedule.fp1.time)
+    const race_local_time =scheduleFormatDate(raceDateString, props.race.schedule.race.time)
     return `${fp1_local_time}-${race_local_time}`
   }
 });
@@ -58,7 +72,7 @@ const theRaceRound = ref<number>(props.race.round)
 比赛 时间
 * */
 // 正赛
-const raceDate = computed(()=>{
+const raceDate = computed(() => {
   return dateUtils.convertUTCtoCST(props.race.schedule.race.date, props.race.schedule.race.time)
 })
 const lapRecord = computed(() => {
@@ -73,16 +87,20 @@ const corners = computed(() => {
 const laps = computed(() => {
   return props.race.circuit.laps
 })
-const circuitId = computed(() => {
-  return props.race.circuit.circuitId
-})
+
 const circuitInfo = computed(() => {
-  return circuit.find(item =>{
+  return circuit.find(item => {
     if (item.circuitId === circuitId.value)
       return item
   })
 })
 
+function scheduleFormatDateTime(date:any,time:any){
+    return  dateUtils.getMonthDay(dateUtils.convertUTCtoCST(date, time))+' '+dateUtils.getHoursMinutes(dateUtils.convertUTCtoCST(date, time))
+}
+function scheduleFormatDate(date:any,time:any){
+  return  dateUtils.getMonthDay(dateUtils.convertUTCtoCST(date, time))
+}
 </script>
 
 <template>
@@ -96,27 +114,34 @@ const circuitInfo = computed(() => {
     <div class="race-item-detail" v-show="collapseStatus">
       <div class="race-item-detail-basic">
         <div class="race-item-detail-track">
-          <div>
+          <div class="race-item-detail-track-item">
             <Icon icon="tabler:number"/>
             第{{ theRaceRound }}场
           </div>
-          <div>
-            <Icon icon="cil:calendar"/>
-            {{ dateUtils.getMonthDay(raceDate) }} {{dateUtils.getHoursMinutes(raceDate)}}
+          <div class="race-item-detail-track-schedule">
+            <div class="race-item-detail-track-schedule-icon">
+              <Icon icon="cil:calendar"/>
+            </div>
+            <div class="race-item-detail-track-schedule-content">
+              <div v-for="(item ,index) in theRaceSchedule" :key="index" class="race-item-detail-track-schedule-item">
+                <span>{{ raceUtils.getRaceTypeZh(item.type) }}</span>
+                {{scheduleFormatDateTime(item.schedule.date,item.schedule.time)}}
+              </div>
+            </div>
           </div>
-          <div>
+          <div class="race-item-detail-track-item">
             <Icon icon="mdi:address-marker"/>
             {{ circuitInfo?.country_zh }} ,{{ circuitInfo?.city_zh }}
           </div>
-          <div>
+          <div class="race-item-detail-track-item">
             <Icon icon="maki:racetrack"/>
             {{ circuitInfo?.circuitName_zh }}
           </div>
-          <div>
+          <div class="race-item-detail-track-item">
             <Icon icon="material-symbols:trail-length"/>
             {{ circuitLength }} {{ laps }}圈 {{ corners }}个弯
           </div>
-          <div>
+          <div class="race-item-detail-track-item">
             <Icon icon="mingcute:time-line"/>
             最快记录：{{ lapRecord }}
           </div>
@@ -202,7 +227,8 @@ const circuitInfo = computed(() => {
 
 .race-item-detail-track {
   display: block;
-  > div {
+
+  .race-item-detail-track-item {
     padding: 4px 0;
     display: flex;
     align-items: center;
@@ -216,5 +242,29 @@ const circuitInfo = computed(() => {
 
 .the-race-detail {
   padding: 5px 20px;
+}
+
+.race-item-detail-track-schedule {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+.race-item-detail-track-schedule-content{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: 770px) {
+    grid-template-columns: 1fr;
+  }
+  .race-item-detail-track-schedule-item{
+    >span{
+      color: var(--text-s);
+    }
+  }
+}
+.race-item-detail-track-schedule-icon {
+  color: var(--text-s);
+  margin-right: 5px;
+  display: flex;
+  align-items: start;
 }
 </style>

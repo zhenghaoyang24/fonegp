@@ -17,12 +17,10 @@ const loadingStatus = ref<boolean>(true)
 onBeforeMount( () => {
   if (dateUtils.checkHourBefore(new Date(lastFetchTime.value) )){  //如果是一小时前刷新，则重新获取
     fetchSeasonBasicDate()
-    console.log("刷新数据")
   }else{
     setTimeout(()=>{
       loadingStatus.value = false;  // 显示数据加载
     },800)
-    console.log("没有刷新数据")
   }
 })
 
