@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
 import {storeToRefs} from "pinia";
-import {computed, onBeforeMount, onMounted, ref, watch} from "vue";
+import {onBeforeMount, ref, watch} from "vue";
 import type {RaceSchedule} from "@/interface/RaceScheduleArray.ts";
 import RaceResultTypeDetail from "@/components/RaceResultTypeDetail.vue";
 
@@ -20,6 +20,7 @@ const props = defineProps({
 
 // 本场比赛的赛程
 const theRaceSchedule = ref<RaceSchedule>()
+
 // 获取本场比赛的赛程与轮次
 function getTheRaceSchedule() {
   theRaceSchedule.value = currentRacesScheduleDate.value.races.find(item => {
@@ -30,7 +31,6 @@ function getTheRaceSchedule() {
 // 监听 round 与 id 的变化
 watch(() => [props.theRound, props.circuitId], ([newCount, newName]) => {
   getTheRaceSchedule()
-
 }, {immediate: true})
 onBeforeMount(() => {
   getTheRaceSchedule()

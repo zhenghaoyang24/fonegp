@@ -32,9 +32,9 @@
 
 
   /* 数据可视化专用色 */
-  --lap-time-up: #ff4444; /* 单圈时间上升 */
-  --lap-time-down: #00c853; /* 单圈时间下降 */
-  --drs-zone: #7b1fa2; /* DRS区域紫色 */
+  --lap-time-down: #ff4444; /* 下降 */
+  --lap-time-up: #00c853; /* 上升 */
+  --fast-lap-purple: #7b1fa2; /* DRS区域紫色 */
 
   /* 动画参数 */
   --pitstop-animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 快速切换动效 */

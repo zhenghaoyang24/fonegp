@@ -37,6 +37,7 @@ watch(() => props.round, (_new, _old) => {
 
 // 定义 emit类型
 const emits = defineEmits<{ (e: 'changeRaceRoundEmit', args: number): void }>()
+
 // 更改轮次
 function changeRaceRoundBtn(delta: boolean) {
   if (delta) // +1

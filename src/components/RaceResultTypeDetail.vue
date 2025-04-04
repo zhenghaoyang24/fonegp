@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type {RaceScheduleTypeDate} from "@/interface/RaceScheduleArray.ts";
 import dateUtils from "@/utils/dateUtils.ts";
 import raceUtils from "@/utils/raceUtils.ts";
-import {onBeforeMount, onMounted, ref, watch} from "vue";
+import {onBeforeMount, ref, watch} from "vue";
 import {Icon} from "@iconify/vue";
 import axios from "axios";
 import {F1_API} from "@/utils/api.ts";
@@ -137,19 +136,23 @@ const raceResultFetchError = ref<string>("别急，正在干扰 ToTo 的无线�
     </div>
     <div class="type-result-detail" v-show="!collapseStatus">
       <div class="type-result-fetch-error" v-if="raceResultFetchIng">
-        {{raceResultFetchError}}
+        {{ raceResultFetchError }}
       </div>
       <div class="type-result-fetch-success" v-else>
         <div class="result-item">
-          <div class="result-item-title grid-1-1-1">
+          <div class="result-item-title grid-auto">
             <span>排名</span>
             <span>车手</span>
-            <span>差距</span>
+            <span v-if="props.theType === 'race' || props.theType === 'sprintRace'">GAP</span>
+            <span v-if="props.theType === 'race' || props.theType === 'sprintRace'">积分</span>
+            <span v-else>GAP</span>
           </div>
-          <div class="result-item-content grid-1-1-1"  v-for="(item ,index) in theRaceTypeResult" :key="index">
-            <span>{{index+1}}</span>
+          <div class="result-item-content grid-auto" v-for="(item ,index) in theRaceTypeResult" :key="index">
+            <span v-if="props.theType === 'race' || props.theType === 'sprintRace'">{{ item.position==='-'? '+DQS': item.position }}</span>
+            <span v-else>{{ index + 1}}</span>
             <span>{{ getDriverNameZh(item.driver.driverId) }}</span>
-            <span>Todo</span>
+            <span>{{item.time}}</span>
+            <span v-if="props.theType === 'race' || props.theType === 'sprintRace'">{{item.points}}</span>
           </div>
         </div>
       </div>
@@ -166,6 +169,7 @@ const raceResultFetchError = ref<string>("别急，正在干扰 ToTo 的无线�
   justify-content: space-around;
   background-color: var(--card-bg-color);
   padding: 15px 0;
+
 
 }
 
@@ -192,19 +196,34 @@ const raceResultFetchError = ref<string>("别急，正在干扰 ToTo 的无线�
   padding: 40px 0;
   color: var(--brand-color);
 }
-.result-item{
+
+.result-item {
   display: block;
 }
-.result-item-title{
+
+.result-item-title {
   padding: 10px 0;
   color: var(--text-s);
+
+
 }
-.grid-1-1-1{
+.grid-auto{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   >span{
     display: flex;
     justify-content: center;
   }
+}
+
+.result-item-content{
+  padding: 10px 0;
+  &:hover{
+    background-color: var(--card-border-color);
+  }
+}
+.fast-lap-text{
+  color: var(--fast-lap-purple);
 }
 </style>

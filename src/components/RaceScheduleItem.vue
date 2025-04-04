@@ -49,7 +49,7 @@ const raceStartEndDateString = computed(() => {
   else {
     //  转换时间
     const fp1_local_time = scheduleFormatDate(fp1DateString, props.race.schedule.fp1.time)
-    const race_local_time =scheduleFormatDate(raceDateString, props.race.schedule.race.time)
+    const race_local_time = scheduleFormatDate(raceDateString, props.race.schedule.race.time)
     return `${fp1_local_time}-${race_local_time}`
   }
 });
@@ -95,11 +95,12 @@ const circuitInfo = computed(() => {
   })
 })
 
-function scheduleFormatDateTime(date:any,time:any){
-    return  dateUtils.getMonthDay(dateUtils.convertUTCtoCST(date, time))+' '+dateUtils.getHoursMinutes(dateUtils.convertUTCtoCST(date, time))
+function scheduleFormatDateTime(date: any, time: any) {
+  return dateUtils.getMonthDay(dateUtils.convertUTCtoCST(date, time)) + ' ' + dateUtils.getHoursMinutes(dateUtils.convertUTCtoCST(date, time))
 }
-function scheduleFormatDate(date:any,time:any){
-  return  dateUtils.getMonthDay(dateUtils.convertUTCtoCST(date, time))
+
+function scheduleFormatDate(date: any, time: any) {
+  return dateUtils.getMonthDay(dateUtils.convertUTCtoCST(date, time))
 }
 </script>
 
@@ -125,7 +126,7 @@ function scheduleFormatDate(date:any,time:any){
             <div class="race-item-detail-track-schedule-content">
               <div v-for="(item ,index) in theRaceSchedule" :key="index" class="race-item-detail-track-schedule-item">
                 <span>{{ raceUtils.getRaceTypeZh(item.type) }}</span>
-                {{scheduleFormatDateTime(item.schedule.date,item.schedule.time)}}
+                {{ scheduleFormatDateTime(item.schedule.date, item.schedule.time) }}
               </div>
             </div>
           </div>
@@ -249,18 +250,21 @@ function scheduleFormatDate(date:any,time:any){
   justify-content: start;
   align-items: start;
 }
-.race-item-detail-track-schedule-content{
+
+.race-item-detail-track-schedule-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   @media screen and (max-width: 770px) {
     grid-template-columns: 1fr;
   }
-  .race-item-detail-track-schedule-item{
-    >span{
+
+  .race-item-detail-track-schedule-item {
+    > span {
       color: var(--text-s);
     }
   }
 }
+
 .race-item-detail-track-schedule-icon {
   color: var(--text-s);
   margin-right: 5px;

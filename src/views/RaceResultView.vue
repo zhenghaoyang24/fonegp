@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import {onBeforeMount, ref, watch} from "vue";
 import {useRoute} from 'vue-router'
-
-const route = useRoute()
 import {storeToRefs} from "pinia";
 import RaceDetailOverviewTab from "@/components/RaceDetailOverviewTab.vue";
 import {seasonDataStorage} from "@/stores/seasonStore.ts";
 import RaceResultPanel from "@/components/RaceResultPanel.vue";
 
 const seasonData = seasonDataStorage();
-
+const route = useRoute()
 // 选中 渲染的场次
 const selectRound = ref<number>(0)
 // 选中 渲染的场次 id
@@ -32,9 +30,9 @@ const limitRound = (round: any) => {
   if (isNaN(convertRound)) {  //收到不是数字时，返回当前场次
     return currentRoundStore.value
   } else {
-    if (convertRound < 1){ // 小于 1
+    if (convertRound < 1) { // 小于 1
       return 1
-    }else if (convertRound > totalRoundStore.value) { // 收到参数大于总场次，返回最大场次
+    } else if (convertRound > totalRoundStore.value) { // 收到参数大于总场次，返回最大场次
       return totalRoundStore.value
     } else {  // 返回本身
       return convertRound
@@ -42,22 +40,23 @@ const limitRound = (round: any) => {
   }
 }
 // 监听 selectRound，改变 selectRoundCircuitId
-watch(()=>selectRound.value,(_new)=>{
+watch(() => selectRound.value, (_new) => {
   const theItem = currentSeasonInfoOfAllRaces.value.find(item => {
     return item.round === _new
   })
-  selectRoundCircuitId.value = theItem?.circuit.circuitId? theItem?.circuit.circuitId : 'no-circuitId'
+  selectRoundCircuitId.value = theItem?.circuit.circuitId ? theItem?.circuit.circuitId : 'no-circuitId'
 })
 
 // 按钮切换
-function changeRaceRoundFn(delta:number){
+function changeRaceRoundFn(delta: number) {
   selectRound.value = limitRound(delta)
 }
 </script>
 
 <template>
   <div class="race-detail-content">
-    <RaceDetailOverviewTab @changeRaceRoundEmit="changeRaceRoundFn" :round="selectRound" :circuitId="selectRoundCircuitId"/>
+    <RaceDetailOverviewTab @changeRaceRoundEmit="changeRaceRoundFn" :round="selectRound"
+                           :circuitId="selectRoundCircuitId"/>
     <RaceResultPanel :the-round="selectRound" :circuit-id="selectRoundCircuitId"/>
   </div>
 </template>
