@@ -3,21 +3,20 @@
 </script>
 
 <template>
-<div class="rank-container">
-  <div class="rank-content">
-    123
-
+  <div class="rank-container">
+    <div class="rank-content">
+      123
+    </div>
   </div>
-</div>
 </template>
 
 <style scoped>
-.rank-container{
+.rank-container {
   width: 100%; /* 占据剩余空间 */
   overflow-y: auto; /* 超出内容垂直滚动 */
-
 }
-.rank-content{
+
+.rank-content {
   margin-left: 95px;
   background-color: var(--card-bg-color);
   border: 1px solid var(--card-border-color);
