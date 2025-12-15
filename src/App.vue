@@ -51,7 +51,7 @@ const fetchSeasonBasicDate = async () => {
 </script>
 
 <template>
-  <header class="header">
+  <!-- <header class="header">
     <Navbar />
   </header>
   <main class="no-data-view" v-if="loadingStatus">正在加载调校数据 ...</main>
@@ -60,7 +60,37 @@ const fetchSeasonBasicDate = async () => {
   </main>
   <footer>
     <Footer />
-  </footer>
+  </footer> -->
+
+  <v-layout class="rounded rounded-md border">
+    <v-app-bar rounded>
+      <template v-slot:prepend>
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      </template>
+
+      <v-app-bar-title>Application Bar</v-app-bar-title>
+
+      <template v-slot:append>
+        <v-btn icon="mdi-heart"></v-btn>
+
+        <v-btn icon="mdi-magnify"></v-btn>
+
+        <v-btn icon="mdi-dots-vertical"></v-btn>
+      </template>
+    </v-app-bar>
+
+    <v-main class="d-flex align-center justify-center" height="300">
+      <v-container>
+        <v-sheet
+          border="dashed md"
+          color="surface-light"
+          height="200"
+          rounded="lg"
+          width="100%"
+        ></v-sheet>
+      </v-container>
+    </v-main>
+  </v-layout>
 </template>
 
 <style scoped>

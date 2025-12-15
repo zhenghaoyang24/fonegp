@@ -12,15 +12,18 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@fontsource/roboto": "^5.2.9",
     "axios": "^1.8.4",
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.2.0",
     "vue": "^3.5.13",
     "vue-i18n": "^11.2.2",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vuetify": "^3.11.3"
   },
   "devDependencies": {
     "@iconify/vue": "^4.3.0",
+    "@mdi/font": "^7.4.47",
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.13.9",
     "@vitejs/plugin-vue": "^5.2.1",
