@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import router from "@/router";
+import LanguageSelect from "./LanguageSelect.vue";
 </script>
 
 <template>
 
   <nav class="navbar">
-    <div class="nav-logo" @click="()=> router.push('/race')">
+    <div class="nav-logo" @click="() => router.push('/race')">
       FoneGP
     </div>
     <div class="navbar-link">
-      <RouterLink to="/race">比赛</RouterLink>
-      <RouterLink to="/schedule">赛程</RouterLink>
-      <RouterLink to="/result">结果</RouterLink>
-      <RouterLink to="/rank">排行</RouterLink>
+      <RouterLink to="/race">{{ $t("navbar.home") }}</RouterLink>
+      <RouterLink to="/schedule">{{ $t("navbar.schedule") }}</RouterLink>
+      <RouterLink to="/result">{{ $t("navbar.result") }}</RouterLink>
+      <RouterLink to="/rank">{{ $t("navbar.ranking") }}</RouterLink>
     </div>
     <div class="navbar-btn">
-
+      <LanguageSelect />
     </div>
   </nav>
 
@@ -48,7 +49,7 @@ import router from "@/router";
 .navbar-link {
   display: flex;
 
-  > a {
+  >a {
     color: var(--text-s);
     padding: 0;
     margin: 0 7px;
@@ -58,6 +59,4 @@ import router from "@/router";
     }
   }
 }
-
-
 </style>

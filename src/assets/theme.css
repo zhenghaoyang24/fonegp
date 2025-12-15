@@ -6,6 +6,7 @@
   --bg-color: #000000; /* 深空黑背景 */
   --card-bg-color: rgba(17, 17, 17, 1); /* 卡片背景（带层次感的深灰） */
   --card-border-color: #1f1f1f;
+  --border-color-inverted: #999999; /* 更亮的边框 */
 
   /* 文字 */
   --text-p: #e9ecef; /* 主要文字（浅灰白） */
