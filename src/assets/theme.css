@@ -1,4 +1,4 @@
-:root{
+:root {
   /* 品牌色 */
   --brand-color: #ff2800;
 
@@ -10,7 +10,7 @@
 
   /* 文字 */
   --text-p: #e9ecef; /* 主要文字（浅灰白） */
-  --text-s: #656565; /* 次级文字 */
+  --text-s: #5c5c5c; /* 次级文字 */
   --text-inverted: #212529; /* 深色背景上的文字 */
 
   /* 状态色 */
@@ -29,9 +29,6 @@
   /* 圆角 */
   --border-radius: 0.5rem;
 
-
-
-
   /* 数据可视化专用色 */
   --lap-time-down: #ff4444; /* 下降 */
   --lap-time-up: #00c853; /* 上升 */
@@ -40,10 +37,9 @@
   /* 动画参数 */
   --pitstop-animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 快速切换动效 */
   --tyre-degrade-gradient: linear-gradient(
-          to right,
-          #00c853 0%,
-          #ffab00 50%,
-          #d50000 100%
+    to right,
+    #00c853 0%,
+    #ffab00 50%,
+    #d50000 100%
   ); /* 轮胎磨损渐变 */
 }
-

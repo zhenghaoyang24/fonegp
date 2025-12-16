@@ -1,76 +1,83 @@
 <script setup lang="ts">
-import {onMounted, ref, watch} from "vue";
+import { onMounted, ref, watch } from "vue";
 import circuit from "@/data/circuit.json";
-import {Icon} from "@iconify/vue";
+import { Icon } from "@iconify/vue";
 
 // 获取 所有 比赛信息
 const props = defineProps({
   round: {
     type: Number,
-    required: true
+    required: true,
   },
   circuitId: {
     type: String,
-    required: true
+    required: true,
   },
-})
+});
 
 // 获取选中比赛的 基本信息
-const selectRaceInfo = ref()
+const selectRaceInfo = ref();
 
 function getSelectRaceInfo(circuitId: any) {
-  return circuit.find(item => {
-    return item.circuitId === circuitId
-  })
+  return circuit.find((item) => {
+    return item.circuitId === circuitId;
+  });
 }
 
 // 初始时 获取数据
 onMounted(() => {
-  selectRaceInfo.value = getSelectRaceInfo(props.circuitId)
-})
+  selectRaceInfo.value = getSelectRaceInfo(props.circuitId);
+});
 
 // props 改变时 获取数据
-watch(() => props.round, (_new, _old) => {
-  // props 改变 刷新数据
-  selectRaceInfo.value = getSelectRaceInfo(props.circuitId)
-})
+watch(
+  () => props.round,
+  (_new, _old) => {
+    // props 改变 刷新数据
+    selectRaceInfo.value = getSelectRaceInfo(props.circuitId);
+  }
+);
 
 // 定义 emit类型
-const emits = defineEmits<{ (e: 'changeRaceRoundEmit', args: number): void }>()
+const emits = defineEmits<{ (e: "changeRaceRoundEmit", args: number): void }>();
 
 // 更改轮次
 function changeRaceRoundBtn(delta: boolean) {
-  if (delta) // +1
-    emits('changeRaceRoundEmit', props.round + 1)
-  else
-    emits('changeRaceRoundEmit', props.round - 1)
+  if (delta)
+    // +1
+    emits("changeRaceRoundEmit", props.round + 1);
+  else emits("changeRaceRoundEmit", props.round - 1);
 }
-
 </script>
 
 <template>
   <div class="race-detail-left-overview">
     <div class="left-overview-title-slid">
-      <span @click="changeRaceRoundBtn(false)"> <Icon icon="fluent:arrow-left-12-filled"/> </span>
+      <span @click="changeRaceRoundBtn(false)">
+        <Icon icon="fluent:arrow-left-12-filled" />
+      </span>
       <h3>{{ selectRaceInfo?.raceName_zh }}</h3>
-      <span @click="changeRaceRoundBtn(true)"> <Icon icon="fluent:arrow-right-12-filled"/> </span>
+      <span @click="changeRaceRoundBtn(true)">
+        <Icon icon="fluent:arrow-right-12-filled" />
+      </span>
     </div>
     <div class="left-overview-info">
       <div>
-        <Icon icon="tabler:number"/>
+        <Icon icon="tabler:number" />
         第{{ props.round }}场
       </div>
       <div>
-        <Icon icon="mdi:address-marker"/>
+        <Icon icon="mdi:address-marker" />
         {{ selectRaceInfo?.country_zh }} ,{{ selectRaceInfo?.city_zh }}
       </div>
       <div>
-        <Icon icon="maki:racetrack"/>
+        <Icon icon="maki:racetrack" />
         {{ selectRaceInfo?.circuitName_zh }}
       </div>
       <div>
-        <Icon icon="material-symbols:trail-length"/>
-        {{ selectRaceInfo?.circuitLength }} {{ selectRaceInfo?.laps }}圈 {{ selectRaceInfo?.corners }}个弯
+        <Icon icon="material-symbols:trail-length" />
+        {{ selectRaceInfo?.circuitLength }} {{ selectRaceInfo?.laps }}圈
+        {{ selectRaceInfo?.corners }}个弯
       </div>
     </div>
   </div>
@@ -109,7 +116,8 @@ function changeRaceRoundBtn(delta: boolean) {
     border-radius: 50%;
     border: 2px solid var(--card-border-color);
     color: var(--text-s);
-    transition: border-top-color 0.1s, border-right-color 0.2s, border-bottom-color 0.3s, border-left-color 0.4s;
+    transition: border-top-color 0.1s, border-right-color 0.2s,
+      border-bottom-color 0.3s, border-left-color 0.4s;
 
     &:hover {
       color: var(--brand-color);
@@ -137,6 +145,5 @@ function changeRaceRoundBtn(delta: boolean) {
       margin-right: 5px;
     }
   }
-
 }
 </style>

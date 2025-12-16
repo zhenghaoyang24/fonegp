@@ -1,40 +1,37 @@
 <script setup lang="ts">
 import router from "@/router";
-import LanguageSelect from "./LanguageSelect.vue";
+import FOSelect from "@/components/common/FOSelect.vue";
+import { Langs } from "@/locales";
+import { useI18n } from "vue-i18n";
+const { locale } = useI18n();
+
+// 切换语言
+function changeLang(newLang: string) {
+  console.log("Change language to:", newLang);
+  locale.value = newLang;
+}
 </script>
 
 <template>
-
-  <nav class="navbar">
-    <div class="nav-logo" @click="() => router.push('/race')">
-      FoneGP
+  <nav
+    class="flex items-center justify-between p-2 box-border bg-dark rounded-lg w-200 h-20 common-border common-shadow">
+    <div class="flex items-center">
+      <div class="nav-logo" @click="() => router.push('/race')">FoneGP</div>
+      <div class="navbar-link">
+        <RouterLink to="/race">{{ $t("navbar.home") }}</RouterLink>
+        <RouterLink to="/schedule">{{ $t("navbar.schedule") }}</RouterLink>
+        <RouterLink to="/result">{{ $t("navbar.result") }}</RouterLink>
+        <RouterLink to="/rank">{{ $t("navbar.ranking") }}</RouterLink>
+      </div>
     </div>
-    <div class="navbar-link">
-      <RouterLink to="/race">{{ $t("navbar.home") }}</RouterLink>
-      <RouterLink to="/schedule">{{ $t("navbar.schedule") }}</RouterLink>
-      <RouterLink to="/result">{{ $t("navbar.result") }}</RouterLink>
-      <RouterLink to="/rank">{{ $t("navbar.ranking") }}</RouterLink>
-    </div>
-    <div class="navbar-btn">
-      <LanguageSelect />
+    <div class="flex items-center gap-2">
+      <FOSelect :showBorder="false" :show-text="false" type="icon" :show-icon="true" icon="mdi:language" :size="20" :value="$i18n.locale" :options="Langs"
+        @onChangeLang="changeLang" />
     </div>
   </nav>
-
 </template>
 
 <style scoped>
-.navbar {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  box-sizing: border-box;
-  margin: 0 auto;
-  height: 70px;
-  max-width: 500px;
-  background-color: var(--card-bg-color);
-  border: 1px solid var(--card-border-color);
-  border-radius: var(--border-radius);
-}
 
 .nav-logo {
   cursor: pointer;

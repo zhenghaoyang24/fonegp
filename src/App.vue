@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 import Navbar from "@/components/navbar/Navbar.vue";
 import { seasonDataStorage } from "@/stores/seasonStore.ts";
 const seasonData = seasonDataStorage();
@@ -51,63 +51,29 @@ const fetchSeasonBasicDate = async () => {
 </script>
 
 <template>
-  <!-- <header class="header">
+  <header class="flex items-center justify-center fixed p-4 z-9999 top-0 right-0 left-0 bg-dark">
     <Navbar />
   </header>
-  <main class="no-data-view" v-if="loadingStatus">正在加载调校数据 ...</main>
+  <main class="pt-15 flex items-center justify-center text-primary loading" v-if="loadingStatus">
+    {{ $t("tip.initLoading") }}</main>
   <main class="main" v-else>
     <RouterView />
   </main>
   <footer>
     <Footer />
-  </footer> -->
-
-  <v-layout class="rounded rounded-md border">
-    <v-app-bar rounded>
-      <template v-slot:prepend>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      </template>
-
-      <v-app-bar-title>Application Bar</v-app-bar-title>
-
-      <template v-slot:append>
-        <v-btn icon="mdi-heart"></v-btn>
-
-        <v-btn icon="mdi-magnify"></v-btn>
-
-        <v-btn icon="mdi-dots-vertical"></v-btn>
-      </template>
-    </v-app-bar>
-
-    <v-main class="d-flex align-center justify-center" height="300">
-      <v-container>
-        <v-sheet
-          border="dashed md"
-          color="surface-light"
-          height="200"
-          rounded="lg"
-          width="100%"
-        ></v-sheet>
-      </v-container>
-    </v-main>
-  </v-layout>
+  </footer>
 </template>
 
 <style scoped>
-.header {
-  z-index: 9999;
-  position: fixed;
-  right: 0;
-  left: 0;
-  padding: 7px;
-  background-color: var(--bg-color);
+.loading {
+  height: calc(100vh - 100px);
 }
-.no-data-view {
-  height: 67vh;
+
+/* TODO: 添加tailwind */
+.main {
+  padding: 90px 7px 7px 7px;
+  color: var(--text-p);
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--brand-color);
+  max-width: 1200px;
 }
 </style>
