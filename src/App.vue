@@ -51,9 +51,10 @@ import Footer from "@/components/footer/Footer.vue";
 
 
 import { onMounted, ref } from 'vue';
-import { getAllSeasonsInfoRequest, getCurrentSeasonInfoRequest } from './api/seasonsApi';
+import { getCurrentSeasonInfoRequest,getAllSeasonsInfoRequest } from './api/seasonsApi';
 import type { Response } from "./type/request";
 import type { Season } from "./type/season";
+import axios from "axios";
 
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true);
@@ -61,7 +62,7 @@ onMounted(async () => {
   loadingStatus.value = true;
   const res = await getAllSeasonsInfoRequest()
   console.log(res);
-
+  
   loadingStatus.value = false;
 })
 </script>
