@@ -4,10 +4,17 @@
 @theme {
   --spacing: 0.25rem;
   --color-primary: #ff2800;
-  --color-dark: #000000;
-  --color-gray: #5c5c5c;
-  --color-light: #e9ecef;
+  --color-pdark: #cc2000;
+  --color-plight:#ff5c40;
+  --color-bgcard: #111111;
+  --color-bg: #000000;
+  --color-line: #222222;
+  --color-tp: #ffffff;
+  --color-ts: #aaaaaa;
+  --color-tm: #666666;
 }
+
+
 @import "./theme.css";
 html,
 body {
@@ -42,17 +49,9 @@ a {
 }
 
 .router-link-active {
-  color: var(--text-p) !important;
+  color: var(--color-tp) !important;
 }
 
 .router-link-exact-active {
-  color: var(--text-p) !important;
-}
-
-.common-border {
-  border: 1px solid var(--color-gray);
-}
-
-.common-shadow {
-  box-shadow: 0 0 10px #353030;
+  color: var(--color-tp) !important;
 }

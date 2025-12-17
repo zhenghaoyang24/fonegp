@@ -19,6 +19,5 @@ export async function getAllSeasonsInfoRequest(): Promise<Response<Season[]>> {
   const url = "/seasons"; // request URL
   const dataKeyName = "championships"; // key name of data in response
   const res = await apiRequest<Season[]>(url, dataKeyName);
-
   return res;
 }

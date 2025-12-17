@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // import { RouterView } from "vue-router";
-import Navbar from "@/components/navbar/Navbar.vue";
+// import Navbar from "@/components/navbar/Navbar.vue";
 // import { seasonDataStorage } from "@/stores/seasonStore.ts";
 // const seasonData = seasonDataStorage();
 // import { onBeforeMount, onMounted, ref } from "vue";
-import Footer from "@/components/footer/Footer.vue";
+// import Footer from "@/components/footer/Footer.vue";
 // import { storeToRefs } from "pinia";
 // import dateUtils from "@/utils/dateUtils.ts";
 // // 获取 刷新时间
@@ -49,12 +49,12 @@ import Footer from "@/components/footer/Footer.vue";
 //   }
 // };
 
-
+import Navbar from "@/components/navbar/Navbar.vue";
+import Footer from "@/components/footer/Footer.vue";
 import { onMounted, ref } from 'vue';
-import { getCurrentSeasonInfoRequest,getAllSeasonsInfoRequest } from './api/seasonsApi';
-import type { Response } from "./type/request";
-import type { Season } from "./type/season";
-import axios from "axios";
+import router from "@/router";
+import { getCurrentSeasonInfoRequest, getAllSeasonsInfoRequest } from './api/seasonsApi';
+import FOLogo from "./components/common/FOLogo.vue";
 
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true);
@@ -62,14 +62,17 @@ onMounted(async () => {
   loadingStatus.value = true;
   const res = await getAllSeasonsInfoRequest()
   console.log(res);
-  
+
   loadingStatus.value = false;
 })
 </script>
 
 <template>
-  <header class="flex items-center justify-center fixed p-4 z-9999 top-0 right-0 left-0 bg-dark">
-    <Navbar />
+  <header class="flex justify-center border-b border-line sticky top-0 p-6 z-9999 bg-dark max-md:p-3">
+    <div class="flex justify-between w-[60%] max-md:w-full">
+      <FOLogo />
+      <Navbar />
+    </div>
   </header>
   <main class="pt-15 flex items-center justify-center text-primary loading" v-if="loadingStatus">
     {{ $t("tip.initLoading") }}</main>
@@ -82,6 +85,16 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+.nav-logo {
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  color: var(--brand-color);
+  font-weight: 900;
+  font-size: 1.2em;
+  margin: 0 10px;
+}
+
 .loading {
   height: calc(100vh - 100px);
 }

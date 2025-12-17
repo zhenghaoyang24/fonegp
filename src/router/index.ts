@@ -5,17 +5,17 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/', redirect: '/race', meta: {
-                title: '比赛 | FoneGP'
+            path: '/', redirect: '/home', meta: {
+                title: '主页 | FoneGP'
             }
         },
         {
-            path: '/race', name: 'race', component: RaceView, meta: {
-                title: '比赛 | FoneGP'
+            path: '/home', name: 'home', component: RaceView, meta: {
+                title: '主页 | FoneGP'
             }
         },
         {
-            path: '/rank', name: 'rank', component: () => import('../views/RankView.vue'), meta: {
+            path: '/ranking', name: 'ranking', component: () => import('../views/RankView.vue'), meta: {
                 title: '排行 | FoneGP'
             }
         },
@@ -43,5 +43,6 @@ const router = createRouter({
         }
     ],
 })
+
 
 export default router

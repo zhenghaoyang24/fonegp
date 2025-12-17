@@ -3,7 +3,7 @@
     <!-- 显示当前选择 -->
     <div class="selected-display" :class="{ 'common-border':showBorder }" @click="toggleDropdown">
       <p v-if="showText">{{ selectedOption.label }}</p>
-      <FOIcon :icon="icon" :size="size" color="var(--text-p)" />
+      <FOIcon :icon="icon" :size="size" color="var(--color-tp)" />
     </div>
 
     <!-- 自定义下拉选项 -->
@@ -76,7 +76,6 @@ const selectOption = (value: string) => {
   box-sizing: border-box;
   padding: 4px 6px;
   border-radius: 4px;
-  background: var(--card-bg-color);
   cursor: pointer;
   display: flex;
   justify-content: center;
