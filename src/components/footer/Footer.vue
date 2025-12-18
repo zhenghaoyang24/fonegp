@@ -3,7 +3,7 @@ import FOIcon from "@/components/common/FOIcon.vue";
 </script>
 
 <template>
-  <footer class="footer">
+  <footer class=" border-t border-line w-full">
     <div class="footer-site-info">
       Designed by
       <a href="https://github.com/zhenghaoyang24" target="_blank"
@@ -22,11 +22,6 @@ import FOIcon from "@/components/common/FOIcon.vue";
 </template>
 
 <style scoped>
-.footer {
-  border-top: 1px solid var(--card-border-color);
-  width: 100vw;
-  height: 100px;
-}
 .footer-site-info {
   color: var(--text-p);
   margin-top: 30px;

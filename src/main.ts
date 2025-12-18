@@ -4,7 +4,7 @@ import piniaPersist from "pinia-plugin-persistedstate";
 import { createI18nInstance } from "@/locales";
 import App from "./App.vue";
 import router from "./router";
-import { useSettingStore } from "./stores/setting";
+import { useSettingStore } from "./stores/settingStore";
 
 import "./assets/main.css";
 

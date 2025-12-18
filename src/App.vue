@@ -60,50 +60,25 @@ import FOLogo from "./components/common/FOLogo.vue";
 const loadingStatus = ref<boolean>(true);
 onMounted(async () => {
   loadingStatus.value = true;
-  const res = await getAllSeasonsInfoRequest()
+  const res = await getCurrentSeasonInfoRequest()
   console.log(res);
-
-  loadingStatus.value = false;
+  setTimeout(() => {
+    loadingStatus.value = false; // 显示数据加载
+  }, 2000);
 })
 </script>
 
 <template>
   <header class="flex justify-center border-b border-line sticky top-0 p-6 z-9999 bg-dark max-md:p-3">
-    <div class="flex justify-between w-[60%] max-md:w-full">
+    <div class="flex justify-between w-5xl max-md:w-full">
       <FOLogo />
       <Navbar />
     </div>
   </header>
-  <main class="pt-15 flex items-center justify-center text-primary loading" v-if="loadingStatus">
-    {{ $t("tip.initLoading") }}</main>
-  <main class="main" v-else>
+  <main class="max-w-5xl mx-auto borrder-b border-line text-tp box-border p-4 max-md:p-2">
     <RouterView />
   </main>
   <footer>
     <Footer />
   </footer>
 </template>
-
-<style scoped>
-.nav-logo {
-  cursor: pointer;
-  user-select: none;
-  text-align: center;
-  color: var(--brand-color);
-  font-weight: 900;
-  font-size: 1.2em;
-  margin: 0 10px;
-}
-
-.loading {
-  height: calc(100vh - 100px);
-}
-
-/* TODO: 添加tailwind */
-.main {
-  padding: 90px 7px 7px 7px;
-  color: var(--text-p);
-  margin: 0 auto;
-  max-width: 1200px;
-}
-</style>

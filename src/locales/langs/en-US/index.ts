@@ -1,6 +1,10 @@
-import navbar from "./navbar";
-import tip from "./tip";
+import navigation from "./navigation";
+import message from "./message";
+import button from "./button";
+import text from "./text";
 export default {
-  navbar,
-  tip,
+  navigation,
+  message,
+  button,
+  text,
 };
