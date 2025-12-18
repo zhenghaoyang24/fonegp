@@ -8,6 +8,8 @@ import { computed, onMounted, ref } from "vue";
 const useSeasonStore = seasonStorage()
 import { useI18n } from 'vue-i18n'
 import FOProgress from "@/components/common/FOProgress.vue";
+import FOIcon from "@/components/common/FOIcon.vue";
+import MatchCard from "@/components/common/MatchCard.vue";
 const { t } = useI18n()
 onMounted(() => {
   Promise.all([
@@ -34,13 +36,29 @@ const seasonData = computed<Option[]>(() => [
       <div class="grid grid-cols-2 max-md:grid-cols-1 gap-4 max-md:gap-2">
         <FOCard :title="$t('text.currentSeasonInfo')" icon="mage:message-information-fill">
           <template #content>
-            <div class="flex flex-col gap-6 max-md:gap-2">
+            <div class="flex flex-col gap-8 max-md:gap-4">
               <FOAnimatedNumber :data="seasonData" />
               <FOProgress :value="50" />
+              <div class="border-t border-line pt-4 max-md:pt-2">
+                <div class="flex gap-1 items-center">
+                  <FOIcon icon="ri:team-fill" size="20" color="var(--color-primary)" />
+                  <p class="text-ts">{{ $t('text.leadingTeam') }}: Ferrari</p>
+                </div>
+                <div class="flex gap-1 items-center">
+                  <FOIcon icon="mdi:racing-helmet" size="20" color="var(--color-primary)" />
+                  <p class="text-ts">{{ $t('text.leadingDriver') }}: Max Verstappen</p>
+                </div>
+              </div>
             </div>
           </template>
         </FOCard>
-        <FOCard />
+        <FOCard :title="$t('text.nextMatch')" icon="maki:racetrack">
+          <template #content>
+            <div class="flex flex-col gap-8 max-md:gap-4 pt-1">
+                <MatchCard />
+            </div>
+          </template>
+        </FOCard>
       </div>
     </div>
   </div>

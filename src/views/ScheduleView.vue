@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
-import {seasonDataStorage} from "@/stores/seasonStore.ts";
-import {storeToRefs} from "pinia";
-import RaceScheduleItem from "@/components/RaceScheduleItem.vue";
-import {onMounted} from "vue";
+// import {seasonDataStorage} from "@/stores/seasonStore.ts";
+// import {storeToRefs} from "pinia";
+// import RaceScheduleItem from "@/components/RaceScheduleItem.vue";
+// import {onMounted} from "vue";
 
-const seasonData = seasonDataStorage();
-const {currentSeasonInfoOfAllRaces} = storeToRefs(seasonData)
+// const seasonData = seasonDataStorage();
+// const {currentSeasonInfoOfAllRaces} = storeToRefs(seasonData)
 </script>
 
 <template>
@@ -16,11 +16,11 @@ const {currentSeasonInfoOfAllRaces} = storeToRefs(seasonData)
       <span>大奖赛</span>
       <span>状态</span>
     </div>
-    <div class="race-item-body">
+    <!-- <div class="race-item-body">
       <div class="race-item-content" v-for="(raceItem ,index) in currentSeasonInfoOfAllRaces" :key="index">
         <RaceScheduleItem :race="raceItem" :collapse="false"/>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </template>

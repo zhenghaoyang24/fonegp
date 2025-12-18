@@ -76,7 +76,8 @@ onMounted(async () => {
     </div>
   </header>
   <main class="max-w-5xl mx-auto borrder-b border-line text-tp box-border p-4 max-md:p-2">
-    <RouterView />
+    <KeepAlive><RouterView /> </KeepAlive>
+    
   </main>
   <footer>
     <Footer />

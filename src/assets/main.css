@@ -5,8 +5,7 @@
   --spacing: 0.25rem;
   --color-primary: #ff2800;
   --color-pdark: #cc2000;
-  --color-plight:#ff5c40;
-  --color-bgcard: #111111;
+  --color-plight:rgba(255, 40, 0, 0.16);
   --color-bg: #000000;
   --color-line: #222222;
   --color-tp: #ffffff;

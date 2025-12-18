@@ -4,4 +4,8 @@ export default {
   totalMatches: "总比赛场数",
   completedMatches: "已完成场数",
   remainingMatches: "剩余场数",
+  leadingTeam: '领先车队',
+  leadingDriver: '领先车手',
+  nextMatch: '下一场比赛',
+  coming: '即将开始',
 };

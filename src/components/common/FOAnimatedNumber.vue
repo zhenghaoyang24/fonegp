@@ -2,7 +2,7 @@
     <div class="grid w-ull" :class="`grid-cols-${props.data.length}`">
         <div v-for="(item, index) in props.data" :key="index" class="flex flex-col items-center">
             <span class="text-4xl font-bold text-primary">{{ Math.floor(animatedValues[index]) }}</span>
-            <span class="text-sm text-ts">{{ item.label }}</span>
+            <span class="text-sm text-tm">{{ item.label }}</span>
         </div>
     </div>
 </template>
@@ -14,6 +14,10 @@ import { type Option } from "@/type/common";
 interface Props {
     data?: Option[];
 }
+
+onMounted(() => {
+    console.log("props", props.data);
+});
 
 const props = withDefaults(defineProps<Props>(), {
     data: () => [
@@ -36,14 +40,14 @@ const startAnimations = () => {
     props.data.forEach((item, i) => {
         const target = item.value;
         const start = animatedValues.value[i] ?? 0;
-        const duration = 1000; // 1秒
+        const duration = (0.8 + Math.random() * (1.5 - 0.8)) * 1000; // 单位：毫秒
         const startTime = performance.now();
 
         const animate = (now: number) => {
             const elapsed = now - startTime;
             let t = Math.min(elapsed / duration, 1);
 
-            // 🎯 Ease-out quadratic: 开始快，逐渐变慢
+            // Ease-out quadratic: 开始快，逐渐变慢
             const easeOutQuad = 1 - Math.pow(1 - t, 2);
 
             animatedValues.value[i] = start + (target - start) * easeOutQuad;
