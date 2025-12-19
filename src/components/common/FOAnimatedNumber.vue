@@ -1,6 +1,6 @@
 <template>
-    <div class="grid w-ull" :class="`grid-cols-${props.data.length}`">
-        <div v-for="(item, index) in props.data" :key="index" class="flex flex-col items-center">
+    <div class="grid w-ull" :class="gridColsValue">
+        <div v-for="(item, index) in data" :key="index" class="flex flex-col items-center">
             <span class="text-4xl font-bold text-primary">{{ Math.floor(animatedValues[index]) }}</span>
             <span class="text-sm text-tm">{{ item.label }}</span>
         </div>
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import { type Option } from "@/type/common";
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 }
 
 onMounted(() => {
-    console.log("props", props.data);
+    console.log(gridColsValue.value);
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -26,6 +26,10 @@ const props = withDefaults(defineProps<Props>(), {
         { label: "Comments", value: 55 },
     ],
 });
+
+const gridColsValue = computed(() => {
+    return 'grid-cols-' + props.data.length.toString()
+})
 
 // 每个项的当前动画值
 const animatedValues = ref<number[]>([]);
