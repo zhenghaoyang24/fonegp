@@ -23,7 +23,7 @@ const seasonData = computed<Option[]>(() => [
   { label: t('text.totalMatches'), value: 24 },
   { label: t('text.completedMatches'), value: 12 },
   { label: t('text.remainingMatches'), value: 12 },
-    { label: t('text.remainingMatches'), value: 12 },
+  { label: t('text.totalPoints'), value: 1000 },
 ])
 </script>
 

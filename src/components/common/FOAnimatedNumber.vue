@@ -1,5 +1,5 @@
 <template>
-    <div class="grid w-ull" :class="gridColsValue">
+    <div class="grid w-ull grid-flow-col">
         <div v-for="(item, index) in data" :key="index" class="flex flex-col items-center">
             <span class="text-4xl font-bold text-primary">{{ Math.floor(animatedValues[index]) }}</span>
             <span class="text-sm text-tm">{{ item.label }}</span>
@@ -14,9 +14,10 @@ import { type Option } from "@/type/common";
 interface Props {
     data?: Option[];
 }
+// TODO: grid-flow-col
 
 onMounted(() => {
-    console.log(gridColsValue.value);
+    console.log(gridColsClass.value);
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -26,11 +27,12 @@ const props = withDefaults(defineProps<Props>(), {
         { label: "Comments", value: 55 },
     ],
 });
-
-const gridColsValue = computed(() => {
-    return 'grid-cols-' + props.data.length.toString()
-})
-
+const gridColsClass = computed(() => {
+    const length = props.data.length;
+    // 可以根据不同的长度设置不同的 grid 列数
+    // 如果需要更复杂的逻辑，可以在这里扩展
+    return `grid-cols-${length}`;
+});
 // 每个项的当前动画值
 const animatedValues = ref<number[]>([]);
 
