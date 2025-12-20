@@ -8,4 +8,7 @@ export default {
   leadingDriver: '领先车手',
   nextMatch: '下一场比赛',
   coming: '即将开始',
+  lastMatchResult: '上场比赛结果',
+  topThreeDrivers: '前三名车手',
+  topThreeTeams: '前三名车队',
 };

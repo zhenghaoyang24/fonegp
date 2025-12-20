@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-1 overflow-hidden">
         <div v-if="showValue" class="w-full flex justify-between text-xs text-ts">
-            <span>{{title}}</span>
+            <span>{{ title }}</span>
             <span>{{ value }}%</span>
         </div>
         <progress class="w-full" max="100" :value="value"> {{ value }}% </progress>
@@ -11,9 +11,9 @@
 <script setup lang="ts">
 
 interface Props {
-  showValue?: boolean,
-  value: number,
-  title?: string
+    showValue?: boolean,
+    value: number,
+    title?: string
 }
 const props = withDefaults(defineProps<Props>(), {
     showValue: true,

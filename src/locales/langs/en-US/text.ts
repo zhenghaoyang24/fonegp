@@ -8,4 +8,7 @@ export default {
   leadingDriver: "Leading driver",
   nextMatch: 'Next Match',
   coming: 'Coming',
+  lastMatchResult: 'Last Match Result',
+  topThreeDrivers:'Top Three Drivers',
+  topThreeTeams:'Top Three Teams',
 };

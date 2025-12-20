@@ -13,6 +13,15 @@
   --color-tm: #666666;
 }
 
+@layer utilities {
+  .gap-responsive {
+    @apply gap-4 max-md:gap-2;
+  }
+  .pt-responsive {
+    @apply pt-4 max-md:pt-2;
+  }
+}
+
 
 @import "./theme.css";
 *{
