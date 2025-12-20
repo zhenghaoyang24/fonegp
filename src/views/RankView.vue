@@ -1,14 +1,9 @@
 <script setup lang="ts">
 
-import RankTypeAside from "@/components/RankTypeAside.vue";
-import RankResultContent from "@/components/RankResultContent.vue";
 </script>
 
 <template>
-  <div class="rank-view">
-    <RankTypeAside/>
-    <RankResultContent/>
-  </div>
+
 </template>
 
 <style scoped>
