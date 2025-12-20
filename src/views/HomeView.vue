@@ -31,10 +31,10 @@ const seasonData = computed<Option[]>(() => [
 <template>
   <div class="w-full bg-bg">
     <FOHero>
-      <h3 class="m-o p-0 text-primary font-bold text-4xl max-md:text-2xl">{{ `${useSeasonStore.currentSeasonYearState}
+      <h3 class="m-o p-0 text-primary font-bold text-4xl text-center max-md:text-3xl">{{ `${useSeasonStore.currentSeasonYearState}
         ${$t('text.championshipName')}` }}</h3>
     </FOHero>
-    <div class="grid gap-responsive mt-10">
+    <div class="grid gap-responsive">
       <div class="grid grid-cols-1">
         <FOCard :title="$t('text.currentSeasonInfo')" icon="mage:message-information-fill">
           <template #content>
@@ -48,7 +48,6 @@ const seasonData = computed<Option[]>(() => [
                 <div>
                   <h3 class="text-ts text-sm">{{ $t('text.topThreeTeams') }}</h3>
                 </div>
-
               </div>
             </div>
           </template>
@@ -60,14 +59,7 @@ const seasonData = computed<Option[]>(() => [
             <div class="flex flex-col gap-responsive pt-1">
               <MatchCard />
               <div class="border-t border-line pt-responsive">
-                <div class="flex gap-1 items-center">
-                  <FOIcon icon="ri:team-fill" size="20" color="var(--color-primary)" />
-                  <p class="text-ts">{{ $t('text.leadingTeam') }}: Ferrari</p>
-                </div>
-                <div class="flex gap-1 items-center">
-                  <FOIcon icon="mdi:racing-helmet" size="20" color="var(--color-primary)" />
-                  <p class="text-ts">{{ $t('text.leadingDriver') }}: Max Verstappen</p>
-                </div>
+                
               </div>
             </div>
           </template>

@@ -11,4 +11,7 @@ export default {
   lastMatchResult: '上场比赛结果',
   topThreeDrivers: '前三名车手',
   topThreeTeams: '前三名车队',
+  season: '赛季',
+  schedule: '赛程',
+  filterCriteria: '筛选条件',
 };

@@ -11,4 +11,7 @@ export default {
   lastMatchResult: 'Last Match Result',
   topThreeDrivers:'Top Three Drivers',
   topThreeTeams:'Top Three Teams',
+  season: 'Season',
+  schedule: 'Schedule',
+  filterCriteria: 'Filter criteria',
 };

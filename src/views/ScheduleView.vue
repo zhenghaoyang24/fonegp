@@ -1,38 +1,25 @@
 <script setup lang="ts">
-
+import FOButton from "@/components/common/FOButton.vue";
+import FOCard from "@/components/common/FOCard.vue";
+import FOHero from "@/components/common/FOHero.vue";
+import { seasonStorage } from "@/stores/seasonStore";
+const useSeasonStore = seasonStorage()
 </script>
 
 <template>
+  <div class="w-full bg-bg">
+    <FOHero>
+      <h3 class="m-o p-0 text-primary font-bold text-center text-4xl max-md:text-2xl">{{
+          `${useSeasonStore.currentSeasonYearState} ${$t('text.season')} - ${$t('text.schedule')}`}}</h3>
+    </FOHero>
+    <div class="flex justify-between items-center border border-line rounded-md p-4">
+        <div class="flex items-center gap-2">
+          <p class="text-ts">{{ $t('text.filterCriteria') }}:</p>
+          <FOButton text="All" icon="medical-icon:family-practice" @click="() => {}" />
+        </div>
+        <div></div>
+      </div>
+
+  </div>
 
 </template>
-
-<style scoped>
-.schedule-race-table {
-  width: 80%;
-  margin: 0 auto;
-  @media screen and (max-width: 770px) {
-    width: 100%;
-  }
-}
-
-.race-item-title {
-  z-index: 999;
-  padding: 10px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  background-color: var(--bg-color);
-  > span {
-    display: flex;
-    justify-content: center;
-  }
-}
-.race-item-body{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-.race-item-content {
-
-  padding: 0 5px;
-}
-</style>

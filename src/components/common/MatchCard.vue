@@ -4,9 +4,9 @@
             <p class="text-primary text-sm">12月</p>
             <p class="text-tp font-extrabold text-3xl">13-15</p>
         </div>
-        <div class="flex flex-col items-start">
-         <p class="text-tp text-lg">匈牙利大奖赛</p>
-         <p class="text-ts text-base">亨格罗林赛道，匈牙利</p>
+        <div class="flex flex-col items-end">
+            <p class="text-tp text-lg">匈牙利大奖赛</p>
+            <p class="text-ts text-base">亨格罗林赛道，匈牙利</p>
         </div>
         <!-- TODO: 添加地图 -->
     </div>
@@ -16,6 +16,4 @@
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
