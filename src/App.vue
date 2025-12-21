@@ -79,7 +79,7 @@ onMounted(async () => {
     <KeepAlive><RouterView /> </KeepAlive>
     
   </main>
-  <footer>
+  <footer class="sticky bottom-0 border-t border-line z-9999 bg-dark">
     <Footer />
   </footer>
 </template>

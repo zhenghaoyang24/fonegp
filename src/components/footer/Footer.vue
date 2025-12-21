@@ -3,7 +3,7 @@ import FOIcon from "@/components/common/FOIcon.vue";
 </script>
 
 <template>
-  <footer class=" border-t border-line w-full">
+  <footer class="w-full">
     <div class="footer-site-info">
       Designed by
       <a href="https://github.com/zhenghaoyang24" target="_blank"

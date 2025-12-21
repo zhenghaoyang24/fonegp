@@ -8,7 +8,6 @@ import { computed, onMounted, ref } from "vue";
 const useSeasonStore = seasonStorage()
 import { useI18n } from 'vue-i18n'
 import FOProgress from "@/components/common/FOProgress.vue";
-import FOIcon from "@/components/common/FOIcon.vue";
 import MatchCard from "@/components/common/MatchCard.vue";
 import FOCollapse from "@/components/common/FOCollapse.vue";
 const { t } = useI18n()
@@ -57,7 +56,6 @@ const seasonData = computed<Option[]>(() => [
             <div class="flex flex-col gap-responsive pt-1">
               <MatchCard />
               <div class="border-t border-line pt-responsive">
-                
               </div>
             </div>
           </template>
@@ -65,7 +63,9 @@ const seasonData = computed<Option[]>(() => [
       </div>
       <div class="grid grid-cols-1">
         <FOCard :title="$t('text.lastMatchResult')" icon="carbon:result">
-          <FOCollapse />
+          <template #content>
+            <FOCollapse :open="true" />
+          </template>
         </FOCard>
       </div>
     </div>
