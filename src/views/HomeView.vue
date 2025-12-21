@@ -35,7 +35,7 @@ const seasonData = computed<Option[]>(() => [
         ${$t('text.championshipName')}` }}</h3>
     </FOHero>
     <div class="grid gap-responsive">
-      <div class="grid grid-cols-1">
+      <div class="grid grid-cols-2 max-md:grid-cols-1 gap-responsive">
         <FOCard :title="$t('text.currentSeasonInfo')" icon="mage:message-information-fill">
           <template #content>
             <div class="flex flex-col gap-responsive">
@@ -52,8 +52,6 @@ const seasonData = computed<Option[]>(() => [
             </div>
           </template>
         </FOCard>
-      </div>
-      <div class="grid grid-cols-2 max-md:grid-cols-1 gap-responsive">
         <FOCard :title="$t('text.nextMatch')" icon="maki:racetrack">
           <template #content>
             <div class="flex flex-col gap-responsive pt-1">
@@ -64,6 +62,8 @@ const seasonData = computed<Option[]>(() => [
             </div>
           </template>
         </FOCard>
+      </div>
+      <div class="grid grid-cols-1">
         <FOCard :title="$t('text.lastMatchResult')" icon="carbon:result">
           <FOCollapse />
         </FOCard>
