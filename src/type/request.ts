@@ -5,6 +5,7 @@ interface Response<T> {
   limit?: number;
   offset?: number;
   total?: number;
+  season?: number;
   data?: T;
 }
 export type { Response };

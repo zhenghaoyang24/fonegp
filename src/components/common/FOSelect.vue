@@ -23,12 +23,12 @@ import { ref, computed } from 'vue'
 import FOIcon from '@/components/common/FOIcon.vue'
 
 interface Option {
-  value: string
-  label: string
+  value: string | number,
+  label: string | number,
 }
 
 interface Props {
-  value: string,
+  value: string | number,
   options: Option[],
   showText?: boolean,
   showIcon?: boolean,
@@ -45,13 +45,13 @@ const props = withDefaults(defineProps<Props>(),{
   size: 16
 }) 
 
-const emit = defineEmits(['onChangeLang'])
+const emit = defineEmits(['changeValue'])
 
 const isOpen = ref(false)
 const hoverOption = ref(null)
 
 const selectedOption = computed(() => {
-  const option = props.options.find((opt) => opt.value === props.value)
+  const option = props.options.find((opt) => opt.value == props.value)
   return option || { value: '', label: '' }
 })
 
@@ -59,8 +59,8 @@ const toggleDropdown = () => {
   isOpen.value = !isOpen.value
 }
 
-const selectOption = (value: string) => {
-  emit('onChangeLang', value)
+const selectOption = (value: string | number) => {
+  emit('changeValue', value)
   isOpen.value = false
 }
 </script>
@@ -109,6 +109,7 @@ const selectOption = (value: string) => {
   max-height: 200px;
   width: fit-content;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .option-item {

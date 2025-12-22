@@ -13,5 +13,6 @@ export default {
   topThreeTeams:'Top Three Teams',
   season: 'Season',
   schedule: 'Schedule',
+  data: 'Data',
   filterCriteria: 'Filter criteria',
 };

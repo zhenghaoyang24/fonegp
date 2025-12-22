@@ -13,5 +13,6 @@ export default {
   topThreeTeams: '前三名车队',
   season: '赛季',
   schedule: '赛程',
+  data: '数据',
   filterCriteria: '筛选条件',
 };

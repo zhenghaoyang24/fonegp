@@ -10,7 +10,7 @@
                 <div class="flex flex-col [&>a]:text-tm gap-2 text-2xl">
                     <RouterLink to="/home" @click="handleClose">{{ $t("navigation.home") }}</RouterLink>
                     <RouterLink to="/schedule" @click="handleClose">{{ $t("navigation.schedule") }}</RouterLink>
-                    <RouterLink to="/result" @click="handleClose">{{ $t("navigation.result") }}</RouterLink>
+                    <RouterLink to="/data" @click="handleClose">{{ $t("navigation.data") }}</RouterLink>
                     <RouterLink to="/ranking" @click="handleClose">{{ $t("navigation.ranking") }}</RouterLink>
                 </div>
 

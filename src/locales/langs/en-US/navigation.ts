@@ -1,7 +1,6 @@
 export default {
   home: "Home",
   schedule: "Schedule",
-  result: "Result",
+  data: "Data",
   ranking: "Ranking",
-  paddock: "Paddock",
 };

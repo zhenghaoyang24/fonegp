@@ -1,5 +1,5 @@
 // src/utils/f1Request.ts
-import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse, AxiosError } from "axios";
+import axios, { type AxiosInstance, type AxiosResponse, AxiosError } from "axios";
 import type { Response } from "@/type/request";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -25,7 +25,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response: AxiosResponse): AxiosResponse<any> => {
     // console.log("Received response:", response);
-    
+
     return response;
   },
   (error: AxiosError): Promise<AxiosError> => {
@@ -42,7 +42,8 @@ instance.interceptors.response.use(
 export async function apiRequest<T>(url: string, dataKeyName: string): Promise<Response<T>> {
   // 解析 dataKeyName 支持嵌套路径，如 "championships[0].seasons"
   const getValueByPath = (obj: any, path: string): any => {
-    return path.split(/[\.\[\]]/) // 支持 . 和 [] 语法
+    return path
+      .split(/[\.\[\]]/) // 支持 . 和 [] 语法
       .filter(Boolean) // 过滤空字符串
       .reduce((acc, key) => acc?.[key], obj);
   };
@@ -68,8 +69,11 @@ export async function apiRequest<T>(url: string, dataKeyName: string): Promise<R
       if (res.data.total) {
         response.total = res.data.total;
       }
+      if (res.data.season) {
+        response.season = res.data.season;
+      }
 
-      return response
+      return response;
     }
 
     return {

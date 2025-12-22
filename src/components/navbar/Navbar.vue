@@ -28,7 +28,7 @@ function menuHandle(v: boolean) {
     <div class="flex items-center gap-2 [&>a]:text-tm max-md:hidden">
       <RouterLink to="/home">{{ $t("navigation.home") }}</RouterLink>
       <RouterLink to="/schedule">{{ $t("navigation.schedule") }}</RouterLink>
-      <RouterLink to="/result">{{ $t("navigation.result") }}</RouterLink>
+      <RouterLink to="/data">{{ $t("navigation.data") }}</RouterLink>
       <RouterLink to="/ranking">{{ $t("navigation.ranking") }}</RouterLink>
     </div>
     <div class="md:hidden cursor-pointer" @click="menuHandle(true)" @mousedown.prevent>
@@ -36,7 +36,7 @@ function menuHandle(v: boolean) {
     </div>
     <div class="flex items-center gap-1 pl-1 border-l border-line">
       <FOSelect :showBorder="false" :show-text="false" type="icon" :show-icon="true" icon="mdi:language" :size="20"
-        :value="$i18n.locale" :options="Langs" @onChangeLang="changeLang" />
+        :value="$i18n.locale" :options="Langs" @changeValue="changeLang" />
       <a href="https://github.com/zhenghaoyang24/fonegp" target="_blank">
         <FOIcon icon="mdi:github" :size="20" color="var(--color-tp)" />
       </a>

@@ -21,6 +21,9 @@
   .pt-responsive {
     @apply pt-4 max-md:pt-2;
   }
+  .common-border{
+    @apply border-1 border-line;
+  }
 }
 
 @import "./theme.css";

@@ -36,12 +36,12 @@ const router = createRouter({
       },
     },
     {
-      path: "/result",
-      name: "result",
-      component: () => import("../views/RaceResultView.vue"),
-      children: [{ path: ":round", component: () => import("../views/RaceResultView.vue") }],
+      path: "/data",
+      name: "data",
+      component: () => import("../views/DataView.vue"),
+      children: [{ path: ":round", component: () => import("../views/DataView.vue") }],
       meta: {
-        title: "Result | FoneGP",
+        title: "Data | FoneGP",
       },
     },
     {

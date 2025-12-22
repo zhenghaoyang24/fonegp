@@ -3,35 +3,39 @@ import FOAnimatedNumber from "@/components/common/FOAnimatedNumber.vue";
 import type { Option } from "@/type/common";
 import FOCard from "@/components/common/FOCard.vue";
 import FOHero from "@/components/common/FOHero.vue";
-import { seasonStorage } from "@/stores/seasonStore";
+import { seasonStorage } from "@/stores/dataStore";
 import { computed, onMounted, ref } from "vue";
-const useSeasonStore = seasonStorage()
-import { useI18n } from 'vue-i18n'
+const useSeasonStore = seasonStorage();
+import { useI18n } from "vue-i18n";
 import FOProgress from "@/components/common/FOProgress.vue";
 import MatchCard from "@/components/common/MatchCard.vue";
 import FOCollapse from "@/components/common/FOCollapse.vue";
-const { t } = useI18n()
+import FOIcon from "@/components/common/FOIcon.vue";
+const { t } = useI18n();
 onMounted(() => {
   Promise.all([
     // fetch current season year
-    useSeasonStore.setCurrentSeasonYearAction()
-  ])
-})
+    useSeasonStore.setCurrentSeasonYearAction(),
+  ]);
+});
 
 // current season matches
 const seasonData = computed<Option[]>(() => [
-  { label: t('text.totalMatches'), value: 24 },
-  { label: t('text.completedMatches'), value: 12 },
-  { label: t('text.remainingMatches'), value: 12 },
-  { label: t('text.totalPoints'), value: 1000 },
-])
+  { label: t("text.totalMatches"), value: 24 },
+  { label: t("text.completedMatches"), value: 12 },
+  { label: t("text.remainingMatches"), value: 12 },
+]);
 </script>
 
 <template>
   <div class="w-full bg-bg">
     <FOHero>
-      <h3 class="m-o p-0 text-primary font-bold text-4xl text-center max-md:text-3xl">{{ `${useSeasonStore.currentSeasonYearState}
-        ${$t('text.championshipName')}` }}</h3>
+      <h3 class="m-o p-0 text-primary font-bold text-4xl text-center max-md:text-3xl">
+        {{
+          `${useSeasonStore.currentSeasonYearState}
+        ${$t("text.championshipName")}`
+        }}
+      </h3>
     </FOHero>
     <div class="grid gap-responsive">
       <div class="grid grid-cols-2 max-md:grid-cols-1 gap-responsive">
@@ -40,12 +44,14 @@ const seasonData = computed<Option[]>(() => [
             <div class="flex flex-col gap-responsive">
               <FOAnimatedNumber :data="seasonData" />
               <FOProgress :value="50" />
-              <div class="border-t border-line pt-responsive grid gap-responsive grid-cols-2 max-md:grid-cols-1">
-                <div>
-                  <h3 class="text-ts text-sm">{{ $t('text.topThreeDrivers') }}</h3>
+              <div class="border-t border-line pt-responsive flex flex-col gap-1">
+                <div class="flex items-center gap-1">
+                  <FOIcon icon="lucide-lab:motor-racing-helmet" color="var(--color-ts)" />
+                  <h3 class="text-ts text-sm">{{ $t("text.leadingDriver") }}:</h3>
                 </div>
-                <div>
-                  <h3 class="text-ts text-sm">{{ $t('text.topThreeTeams') }}</h3>
+                <div class="flex items-center gap-1">
+                  <FOIcon icon="ri:team-fill" color="var(--color-ts)" />
+                  <h3 class="text-ts text-sm">{{ $t("text.leadingTeam") }}:</h3>
                 </div>
               </div>
             </div>
@@ -55,8 +61,7 @@ const seasonData = computed<Option[]>(() => [
           <template #content>
             <div class="flex flex-col gap-responsive pt-1">
               <MatchCard />
-              <div class="border-t border-line pt-responsive">
-              </div>
+              <div class="border-t border-line pt-responsive"></div>
             </div>
           </template>
         </FOCard>
