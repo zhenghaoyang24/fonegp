@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FOButton from "@/components/common/FOButton.vue";
 import FOHero from "@/components/common/FOHero.vue";
 import FOSelect from "@/components/common/FOSelect.vue";
 import { seasonStorage } from "@/stores/dataStore";
@@ -40,6 +41,9 @@ function selectedYearHandle(value: number) {
           :options="dataYearRange"
           @change-value="selectedYearHandle"
         />
+        <FOButton class="bg-primary text-white" text="车手" />
+        <FOButton text="车队" />
+        <FOButton text="赛道" />
       </div>
       <div></div>
     </div>

@@ -1,25 +1,27 @@
 <template>
     <button>
-        <FOIcon icon="{{ icon }}" />
+        <FOIcon v-if="icon" icon="{{ icon }}" />
         {{ text }}
     </button>
 </template>
 
 <script setup lang="ts">
-import type { Icon } from '@iconify/vue/dist/iconify.js';
-import type FOIconVue from './FOIcon.vue';
+import FOIcon from './FOIcon.vue';
 
 const props = defineProps<{
     text: string;
-    icon: string;
+    icon?: string;
 }>()
 </script>
 
 <style scoped>
 button {
+    display: flex;
+    align-items: center;
     transition: all 0.1s ease-in-out;
+    text-align: center;
     cursor: pointer;
-    padding: 0 10px;
+    padding: 0 6px;
     height: 34px;
     color: var(--color-ts);
     background-color: #111111;
