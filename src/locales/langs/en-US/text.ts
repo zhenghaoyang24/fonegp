@@ -15,4 +15,7 @@ export default {
   schedule: 'Schedule',
   data: 'Data',
   filterCriteria: 'Filter criteria',
+  drivers: 'Drivers',
+  teams: 'Teams',
+  circuits: 'Circuits',
 };

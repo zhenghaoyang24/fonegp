@@ -15,4 +15,7 @@ export default {
   schedule: '赛程',
   data: '数据',
   filterCriteria: '筛选条件',
+  drivers: '车手',
+  teams: '车队',
+  circuits: '赛道',
 };
