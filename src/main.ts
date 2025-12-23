@@ -6,7 +6,7 @@ import App from "./App.vue";
 import router from "./router";
 import { useSettingStore } from "./stores/settingStore";
 
-import "./assets/main.css";
+import "./assets/style/main.css";
 
 const app = createApp(App);
 

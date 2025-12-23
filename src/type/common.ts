@@ -94,3 +94,14 @@ export interface Race {
   winner: Driver;
   teamWinner: Team;
 }
+
+export interface DriverChampionship {
+  classificationId: number;
+  driverId: string;
+  teamId: string;
+  points: number;
+  position: number;
+  wins: number;
+  driver: Omit<Driver, "driverId">;
+  team:Team;
+}

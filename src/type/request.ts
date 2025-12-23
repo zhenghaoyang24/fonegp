@@ -6,6 +6,7 @@ interface Response<T> {
   offset?: number;
   total?: number;
   season?: number;
+  championshipId?: string;
   data?: T;
 }
 export type { Response };

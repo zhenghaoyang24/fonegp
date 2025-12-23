@@ -6,13 +6,14 @@ import { onMounted, ref } from 'vue';
 import router from "@/router";
 import { getCurrentSeasonInfoRequest, getAllSeasonsInfoRequest } from './api/seasonsApi';
 import { getRaceListByYear,getCurrentRaceList } from './api/raceApi';
+import {getDriversChampionshipByYear} from './api/driverApi';
 import FOLogo from "./components/common/FOLogo.vue";
 
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true);
 onMounted(async () => {
   loadingStatus.value = true;
-  const res = await getCurrentRaceList()
+  const res = await getDriversChampionshipByYear(2025)
   console.log(res);
   setTimeout(() => {
     loadingStatus.value = false; // 显示数据加载

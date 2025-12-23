@@ -72,6 +72,9 @@ export async function apiRequest<T>(url: string, dataKeyName: string): Promise<R
       if (res.data.season) {
         response.season = res.data.season;
       }
+      if (res.data.championshipId) {
+        response.championshipId = res.data.championshipId;
+      }
 
       return response;
     }
