@@ -18,4 +18,6 @@ export default {
   drivers: '车手',
   teams: '车队',
   circuits: '赛道',
+  position: '排名',
+  points: '积分',
 };

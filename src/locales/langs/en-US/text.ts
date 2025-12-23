@@ -18,4 +18,6 @@ export default {
   drivers: 'Drivers',
   teams: 'Teams',
   circuits: 'Circuits',
+  position: 'Position',
+  points: 'Points',
 };

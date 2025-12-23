@@ -11,11 +11,11 @@
       <div class="flex items-center gap-1 justify-around w-full">
         <div class="text-center">
           <p class="font-bold text-2xl">{{ driver.position }}</p>
-          <p class="text-xs text-ts">Position</p>
+          <p class="text-xs text-ts">{{ $t("text.position") }}</p>
         </div>
         <div class="text-center">
           <p class="font-bold text-2xl">{{ driver.points }}</p>
-          <p class="text-xs text-ts">Points</p>
+          <p class="text-xs text-ts">{{ $t("text.points") }}</p>
         </div>
       </div>
       <div class="border-t border-line mt-2 pt-2 text-sm text-ts gap-2 flex flex-col">
