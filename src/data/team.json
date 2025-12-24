@@ -1,0 +1,102 @@
+[
+    {
+      "teamId": "mclaren",
+      "teamName": "McLaren Formula 1 Team",
+      "brandColor": "#FF8000",
+      "country": "Great Britain",
+      "firstAppareance": 1966,
+      "constructorsChampionships": 9,
+      "driversChampionships": 12,
+      "url": "https://en.wikipedia.org/wiki/McLaren"
+    },
+    {
+      "teamId": "mercedes",
+      "teamName": "Mercedes Formula 1 Team",
+      "brandColor": "#00D2BE",
+      "country": "Germany",
+      "firstAppareance": 1954,
+      "constructorsChampionships": 8,
+      "driversChampionships": 9,
+      "url": "https://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One"
+    },
+    {
+      "teamId": "red_bull",
+      "teamName": "Red Bull Racing",
+      "brandColor": "#0600EF",
+      "country": "Austria",
+      "firstAppareance": 2005,
+      "constructorsChampionships": 6,
+      "driversChampionships": 8,
+      "url": "https://en.wikipedia.org/wiki/Red_Bull_Racing"
+    },
+    {
+      "teamId": "ferrari",
+      "teamName": "Scuderia Ferrari",
+      "brandColor": "#DC0000",
+      "country": "Italy",
+      "firstAppareance": 1950,
+      "constructorsChampionships": 16,
+      "driversChampionships": 15,
+      "url": "https://en.wikipedia.org/wiki/Scuderia_Ferrari"
+    },
+    {
+      "teamId": "williams",
+      "teamName": "Williams Racing",
+      "brandColor": "#005AFF",
+      "country": "Great Britain",
+      "firstAppareance": 1977,
+      "constructorsChampionships": 9,
+      "driversChampionships": 7,
+      "url": "https://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering"
+    },
+    {
+      "teamId": "rb",
+      "teamName": "RB F1 Team",
+      "brandColor": "#2B4562",
+      "country": "Italy",
+      "firstAppareance": 2024,
+      "constructorsChampionships": null,
+      "driversChampionships": null,
+      "url": "https://en.wikipedia.org/wiki/RB_Formula_One_Team"
+    },
+    {
+      "teamId": "aston_martin",
+      "teamName": "Aston Martin F1 Team",
+      "brandColor": "#006F62",
+      "country": "Great Britain",
+      "firstAppareance": 1959,
+      "constructorsChampionships": null,
+      "driversChampionships": null,
+      "url": "https://en.wikipedia.org/wiki/Aston_Martin_in_Formula_One"
+    },
+    {
+      "teamId": "haas",
+      "teamName": "Haas F1 Team",
+      "brandColor": "#FFFFFF",
+      "country": "United States",
+      "firstAppareance": 2016,
+      "constructorsChampionships": null,
+      "driversChampionships": null,
+      "url": "https://en.wikipedia.org/wiki/Haas_F1_Team"
+    },
+    {
+      "teamId": "sauber",
+      "teamName": "Sauber F1 Team",
+      "brandColor": "#52E252",
+      "country": "Switzerland",
+      "firstAppareance": 1993,
+      "constructorsChampionships": null,
+      "driversChampionships": null,
+      "url": "https://en.wikipedia.org/wiki/Sauber_Motorsport"
+    },
+    {
+      "teamId": "alpine",
+      "teamName": "Alpine F1 Team",
+      "brandColor": "#0090FF",
+      "country": "France",
+      "firstAppareance": 2021,
+      "constructorsChampionships": null,
+      "driversChampionships": null,
+      "url": "https://en.wikipedia.org/wiki/Alpine_F1_Team"
+    }
+  ]

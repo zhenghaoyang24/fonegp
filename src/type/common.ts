@@ -24,7 +24,7 @@ export interface Team {
   teamId: string;
   teamName: string;
   country: string;
-  firstAppearance: number;
+  firstAppareance: number;
   constructorsChampionships: number;
   driversChampionships: number;
   url: string;
@@ -103,5 +103,14 @@ export interface DriverChampionship {
   position: number;
   wins: number;
   driver: Omit<Driver, "driverId">;
-  team:Team;
+  team: Team;
+}
+
+export interface TeamChampionship {
+  classificationId: number;
+  teamId: string;
+  points: number;
+  position: number;
+  wins: number;
+  team: Omit<Team, "teamId">;
 }

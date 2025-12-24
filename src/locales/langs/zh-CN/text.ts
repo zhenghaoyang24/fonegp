@@ -20,4 +20,11 @@ export default {
   circuits: '赛道',
   position: '排名',
   points: '积分',
+  seasonWins: '赛季获胜',
+  teamChampionships: '车队冠军',
+  driverChampionships: '车手冠军', 
+  firstAppareance: '首次参赛',
+  country: '国家',
+  nationality: '国籍',
+  birthday: '生日',
 };

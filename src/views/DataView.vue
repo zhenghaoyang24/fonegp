@@ -4,14 +4,16 @@ import FOButton from "@/components/common/FOButton.vue";
 import FOHero from "@/components/common/FOHero.vue";
 import FOSelect from "@/components/common/FOSelect.vue";
 import DriverCard from "@/components/data/DriverCard.vue";
+import TeamCard from "@/components/data/TeamCard.vue";
 // store import
 import { seasonStorage } from "@/stores/dataStore";
 import { computed, onMounted, ref, watch } from "vue";
 const useSeasonStore = seasonStorage();
 // type import
-import type { DriverChampionship } from "@/type/common";
+import type { DriverChampionship, TeamChampionship } from "@/type/common";
 // 接口导入
 import { getDriversChampionshipByYear } from "@/api/driverApi";
+import { getTeamChampionshipByYear } from "@/api/teamApi";
 
 /**
  * @description 年份选择
@@ -56,13 +58,29 @@ function selectedTypeHandle(value: "drivers" | "teams" | "circuits") {
  */
 const isFetching = ref(false);
 const driversList = ref<DriverChampionship[]>([]);
+const teamsList = ref<TeamChampionship[]>([]);
+
 onMounted(async () => {
   isFetching.value = true;
-  const drivers = await getDriversChampionshipByYear(selectedYear.value);
-  if (drivers.status === 200) {
-    driversList.value = drivers.data!;
+
+  try {
+    const [drivers, teams] = await Promise.all([
+      getDriversChampionshipByYear(selectedYear.value),
+      getTeamChampionshipByYear(selectedYear.value),
+    ]);
+
+    if (drivers.status === 200) {
+      driversList.value = drivers.data!;
+    }
+    if (teams.status === 200) {
+      teamsList.value = teams.data!;
+    }
+  } catch (error) {
+    // 可选：处理网络错误或请求失败
+    console.error("Failed to fetch championship data:", error);
+  } finally {
+    isFetching.value = false;
   }
-  isFetching.value = false;
 });
 // 用于存储防抖定时器
 let debounceTimer: ReturnType<typeof setTimeout> | null = null;
@@ -125,7 +143,11 @@ watch(selectedYear, async (newValue) => {
               <DriverCard v-for="driver in driversList" :driver="driver" />
             </div>
           </div>
-          <div v-else-if="selectedType === 'teams'">teams</div>
+          <div v-else-if="selectedType === 'teams'">
+            <div class="w-full grid gap-x-2 gap-y-4 grid-cols-[repeat(auto-fit,minmax(300px,1fr))]">
+              <TeamCard v-for="team in teamsList" :team="team" />
+            </div>
+          </div>
           <div v-else="selectedType === 'circuits'">circuits</div>
         </Transition>
       </div>
