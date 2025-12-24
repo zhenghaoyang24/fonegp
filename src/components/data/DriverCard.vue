@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-bgcard rounded-md border-line border overflow-hidden min-w-75">
+  <div class="bg-bgcard rounded-md border-line border overflow-hidden">
     <div :style="backgroundHead" class="flex gap-1 justify-between items-center p-2">
       <img src="../assets/images/flag-nl.png" alt="flag" class="w-5 h-5" />
       <div>
@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import type { DriverChampionship } from "@/type/common";
-const backgroundColor = ref<string>();
+const backgroundColor = ref<string>("");
 const backgroundHead = computed(() => {
   return `background-image: linear-gradient(120deg, ${backgroundColor.value}, transparent 70%)`;
 });
@@ -60,9 +60,10 @@ const props = defineProps<{
 import TeamData from "@/data/team.json";
 onMounted(() => {
   if (props.driver) {
-    backgroundColor.value = TeamData.find(
-      (team) => team.teamId === props.driver.teamId
-    )!.brandColor;
+    const tem = TeamData.find((team) => team.teamId === props.driver.teamId);
+    if (tem) {
+      backgroundColor.value = tem.brandColor;
+    }
   }
 });
 </script>

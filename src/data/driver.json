@@ -7,7 +7,6 @@
     "number": 4,
     "shortName": "NOR",
     "surname": "Norris",
-    "surname_zh": "诺里斯",
     "url": "https://en.wikipedia.org/wiki/Lando_Norris"
   },
   {
@@ -18,7 +17,6 @@
     "number": 55,
     "shortName": "SAI",
     "surname": "Sainz",
-    "surname_zh": "塞恩斯",
     "url": "https://en.wikipedia.org/wiki/Carlos_Sainz_Jr."
   },
   {
@@ -29,7 +27,6 @@
     "number": 16,
     "shortName": "LEC",
     "surname": "Leclerc",
-    "surname_zh": "勒克莱尔",
     "url": "https://en.wikipedia.org/wiki/Charles_Leclerc"
   },
   {
@@ -40,7 +37,6 @@
     "number": 81,
     "shortName": "PIA",
     "surname": "Piastri",
-    "surname_zh": "皮亚斯特里",
     "url": "https://en.wikipedia.org/wiki/Oscar_Piastri"
   },
   {
@@ -51,7 +47,6 @@
     "number": 33,
     "shortName": "VER",
     "surname": "Verstappen",
-    "surname_zh": "维斯塔潘",
     "url": "https://en.wikipedia.org/wiki/Max_Verstappen"
   },
   {
@@ -62,7 +57,6 @@
     "number": 23,
     "shortName": "ALB",
     "surname": "Albon",
-    "surname_zh": "阿尔本",
     "url": "https://en.wikipedia.org/wiki/Alex_Albon"
   },
   {
@@ -73,7 +67,6 @@
     "number": 63,
     "shortName": "RUS",
     "surname": "Russell",
-    "surname_zh": "拉塞尔",
     "url": "https://en.wikipedia.org/wiki/George_Russell_(racing_driver)"
   },
   {
@@ -84,7 +77,6 @@
     "number": 14,
     "shortName": "ALO",
     "surname": "Alonso",
-    "surname_zh": "阿隆索",
     "url": "https://en.wikipedia.org/wiki/Fernando_Alonso"
   },
   {
@@ -95,7 +87,6 @@
     "number": 6,
     "shortName": "HAD",
     "surname": "Hadjar",
-    "surname_zh": "哈贾尔",
     "url": "https://en.wikipedia.org/wiki/Isack_Hadjar"
   },
   {
@@ -106,7 +97,6 @@
     "number": 18,
     "shortName": "STR",
     "surname": "Stroll",
-    "surname_zh": "斯特罗尔",
     "url": "https://en.wikipedia.org/wiki/Lance_Stroll"
   },
   {
@@ -117,7 +107,6 @@
     "number": 22,
     "shortName": "TSU",
     "surname": "Tsunoda",
-    "surname_zh": "角田",
     "url": "https://en.wikipedia.org/wiki/Yuki_Tsunoda"
   },
   {
@@ -128,7 +117,6 @@
     "number": 44,
     "shortName": "HAM",
     "surname": "Hamilton",
-    "surname_zh": "汉密尔顿",
     "url": "https://en.wikipedia.org/wiki/Lewis_Hamilton"
   },
   {
@@ -139,7 +127,6 @@
     "number": 7,
     "shortName": "DOO",
     "surname": "Doohan",
-    "surname_zh": "杜汉",
     "url": "https://en.wikipedia.org/wiki/Jack_Doohan_(racing_driver)"
   },
   {
@@ -150,7 +137,6 @@
     "number": 12,
     "shortName": "ANT",
     "surname": "Kimi Antonelli",
-    "surname_zh": "安东内利",
     "url": "https://en.wikipedia.org/wiki/Andrea_Kimi_Antonelli"
   },
   {
@@ -161,7 +147,7 @@
     "number": 10,
     "shortName": "BOR",
     "surname": "Bortoleto",
-    "surname_zh": "博托莱托",
+
     "url": "https://en.wikipedia.org/wiki/Gabriel_Bortoleto"
   },
   {
@@ -172,7 +158,6 @@
     "number": 30,
     "shortName": "LAW",
     "surname": "Lawson",
-    "surname_zh": "劳森",
     "url": "http://en.wikipedia.org/wiki/Liam_Lawson"
   },
   {
@@ -183,7 +168,6 @@
     "number": 10,
     "shortName": "GAS",
     "surname": "Gasly",
-    "surname_zh": "加斯利",
     "url": "https://en.wikipedia.org/wiki/Pierre_Gasly"
   },
   {
@@ -194,7 +178,6 @@
     "number": 27,
     "shortName": "HUL",
     "surname": "Hulkenberg",
-    "surname_zh": "霍肯伯格",
     "url": "https://en.wikipedia.org/wiki/Nico_H%C3%BClkenberg"
   },
   {
@@ -205,7 +188,6 @@
     "number": 31,
     "shortName": "OCO",
     "surname": "Ocon",
-    "surname_zh": "奥康",
     "url": "https://en.wikipedia.org/wiki/Esteban_Ocon"
   },
   {
@@ -216,7 +198,6 @@
     "number": 87,
     "shortName": "BEA",
     "surname": "Bearman",
-    "surname_zh": "贝尔曼",
     "url": "https://en.wikipedia.org/wiki/Oliver_Bearman"
   }
 ]

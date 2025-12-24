@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-bgcard rounded-md border-line border overflow-hidden min-w-75">
+  <div class="bg-bgcard rounded-md border-line border overflow-hidden">
     <div
       :style="backgroundHead"
       class="flex gap-1 justify-between items-center pt-4 pb-4 pl-2 pr-2"
@@ -62,7 +62,10 @@ const props = defineProps<{
 import TeamData from "@/data/team.json";
 onMounted(() => {
   if (props.team) {
-    backgroundColor.value = TeamData.find((team) => team.teamId === props.team.teamId)!.brandColor;
+    const tem = TeamData.find((team) => team.teamId === props.team.teamId);
+    if (tem) {
+      backgroundColor.value = tem.brandColor;
+    }
   }
 });
 </script>

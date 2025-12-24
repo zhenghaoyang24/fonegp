@@ -10,10 +10,12 @@ import { seasonStorage } from "@/stores/dataStore";
 import { computed, onMounted, ref, watch } from "vue";
 const useSeasonStore = seasonStorage();
 // type import
-import type { DriverChampionship, TeamChampionship } from "@/type/common";
+import type { DriverChampionship, Race, TeamChampionship } from "@/type/common";
 // 接口导入
 import { getDriversChampionshipByYear } from "@/api/driverApi";
 import { getTeamChampionshipByYear } from "@/api/teamApi";
+import { getRaceListByYear } from "@/api/raceApi";
+import CircuitCard from "@/components/data/CircuitCard.vue";
 
 /**
  * @description 年份选择
@@ -59,14 +61,15 @@ function selectedTypeHandle(value: "drivers" | "teams" | "circuits") {
 const isFetching = ref(false);
 const driversList = ref<DriverChampionship[]>([]);
 const teamsList = ref<TeamChampionship[]>([]);
-
+const racesList = ref<Race[]>([]);
 onMounted(async () => {
   isFetching.value = true;
 
   try {
-    const [drivers, teams] = await Promise.all([
+    const [drivers, teams, races] = await Promise.all([
       getDriversChampionshipByYear(selectedYear.value),
       getTeamChampionshipByYear(selectedYear.value),
+      getRaceListByYear(selectedYear.value),
     ]);
 
     if (drivers.status === 200) {
@@ -74,6 +77,9 @@ onMounted(async () => {
     }
     if (teams.status === 200) {
       teamsList.value = teams.data!;
+    }
+    if (races.status === 200) {
+      racesList.value = races.data!;
     }
   } catch (error) {
     // 可选：处理网络错误或请求失败
@@ -92,9 +98,20 @@ watch(selectedYear, async (newValue) => {
   }
   // 设置新的防抖定时器
   debounceTimer = setTimeout(async () => {
-    const drivers = await getDriversChampionshipByYear(newValue);
+    const [drivers, teams, races] = await Promise.all([
+      getDriversChampionshipByYear(selectedYear.value),
+      getTeamChampionshipByYear(selectedYear.value),
+      getRaceListByYear(selectedYear.value),
+    ]);
+
     if (drivers.status === 200) {
       driversList.value = drivers.data!;
+    }
+    if (teams.status === 200) {
+      teamsList.value = teams.data!;
+    }
+    if (races.status === 200) {
+      racesList.value = races.data!;
     }
     isFetching.value = false;
   }, 1000); // 防抖延迟：300ms
@@ -148,7 +165,11 @@ watch(selectedYear, async (newValue) => {
               <TeamCard v-for="team in teamsList" :team="team" />
             </div>
           </div>
-          <div v-else="selectedType === 'circuits'">circuits</div>
+          <div v-else="selectedType === 'circuits'">
+            <div class="w-full grid gap-x-2 gap-y-4 grid-cols-2 max-md:grid-cols-1">
+              <CircuitCard v-for="race in racesList" :race="race" />
+            </div>
+          </div>
         </Transition>
       </div>
       <div v-else class="flex justify-center items-center h-[50dvh]">
