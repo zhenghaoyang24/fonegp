@@ -1,7 +1,7 @@
 <template>
   <div class="bg-bgcard rounded-md border-line border overflow-hidden">
     <div :style="backgroundHead" class="flex gap-1 justify-between items-center p-2">
-      <img src="" alt="flag" class="w-5 h-5" />
+      <!-- <img src="" alt="flag" class="w-5 h-5" /> -->
       <div>
         <p class="text-tp font-bold">{{ driver.driver.name + " " + driver.driver.surname }}</p>
         <p class="text-ts text-sm">{{ driver.team.teamName }}</p>

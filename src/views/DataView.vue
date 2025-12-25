@@ -6,9 +6,7 @@ import FOSelect from "@/components/common/FOSelect.vue";
 import DriverCard from "@/components/data/DriverCard.vue";
 import TeamCard from "@/components/data/TeamCard.vue";
 // store import
-import { seasonStorage } from "@/stores/dataStore";
 import { computed, onMounted, ref, watch } from "vue";
-const useSeasonStore = seasonStorage();
 // type import
 import type { DriverChampionship, Race, TeamChampionship } from "@/type/common";
 // 接口导入
@@ -16,7 +14,8 @@ import { getDriversChampionshipByYear } from "@/api/driverApi";
 import { getTeamChampionshipByYear } from "@/api/teamApi";
 import { getRaceListByYear } from "@/api/raceApi";
 import CircuitCard from "@/components/data/CircuitCard.vue";
-
+import { dataStorage } from "@/stores/dataStore";
+const useDataStorage = dataStorage();
 /**
  * @description 年份选择
  * 获取选取年份的车手、车队、赛道信息
@@ -122,7 +121,7 @@ watch(selectedYear, async (newValue) => {
     <FOHero>
       <div class="flex flex-col text-center">
         <h3 class="text-primary font-bold text-4xl max-md:text-2xl">
-          {{ `${useSeasonStore.currentSeasonYearState} ${$t("text.season")} - ${$t("text.data")}` }}
+          {{ `${useDataStorage.currentSeasonYearState} ${$t("text.season")} - ${$t("text.data")}` }}
         </h3>
       </div>
     </FOHero>

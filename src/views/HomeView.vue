@@ -3,28 +3,26 @@ import FOAnimatedNumber from "@/components/common/FOAnimatedNumber.vue";
 import type { Option } from "@/type/common";
 import FOCard from "@/components/common/FOCard.vue";
 import FOHero from "@/components/common/FOHero.vue";
-import { seasonStorage } from "@/stores/dataStore";
 import { computed, onMounted, ref } from "vue";
-const useSeasonStore = seasonStorage();
+import { dataStorage } from "@/stores/dataStore";
+const useDataStorage = dataStorage();
 import { useI18n } from "vue-i18n";
 import FOProgress from "@/components/common/FOProgress.vue";
 import MatchCard from "@/components/common/MatchCard.vue";
 import FOCollapse from "@/components/common/FOCollapse.vue";
 import FOIcon from "@/components/common/FOIcon.vue";
 const { t } = useI18n();
-onMounted(() => {
-  Promise.all([
-    // fetch current season year
-    useSeasonStore.setCurrentSeasonYearAction(),
-  ]);
-});
 
 // current season matches
 const seasonData = computed<Option[]>(() => [
-  { label: t("text.totalMatches"), value: 24 },
+  { label: t("text.totalMatches"), value: useDataStorage.currentRaceListState?.length || 0 },
   { label: t("text.completedMatches"), value: 12 },
   { label: t("text.remainingMatches"), value: 12 },
 ]);
+
+onMounted(() => {
+  console.log(useDataStorage.currentRaceListState?.length);
+});
 </script>
 
 <template>
@@ -32,7 +30,7 @@ const seasonData = computed<Option[]>(() => [
     <FOHero>
       <h3 class="m-o p-0 text-primary font-bold text-4xl text-center max-md:text-3xl">
         {{
-          `${useSeasonStore.currentSeasonYearState}
+          `${useDataStorage.currentSeasonYearState}
         ${$t("text.championshipName")}`
         }}
       </h3>

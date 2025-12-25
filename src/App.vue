@@ -2,20 +2,24 @@
 import Navbar from "@/components/navbar/Navbar.vue";
 import Footer from "@/components/footer/Footer.vue";
 import { onMounted, ref } from "vue";
-import router from "@/router";
-import { getCurrentSeasonInfoRequest, getAllSeasonsInfoRequest } from "./api/seasonsApi";
-import { getRaceListByYear, getCurrentRaceList } from "./api/raceApi";
-import { getDriversChampionshipByYear } from "./api/driverApi";
 import FOLogo from "./components/common/FOLogo.vue";
-
+import { dataStorage } from "@/stores/dataStore";
+const { setCurrentRaceListAction, setCurrentSeasonYearAction } = dataStorage();
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true);
 onMounted(async () => {
   loadingStatus.value = true;
-  const res = await getDriversChampionshipByYear(2025);
-  setTimeout(() => {
-    loadingStatus.value = false; // 显示数据加载
-  }, 2000);
+  try {
+    const [seasons, races] = await Promise.all([
+      setCurrentSeasonYearAction(),
+      setCurrentRaceListAction(),
+    ]);
+  } catch (error) {
+    // 可选：处理网络错误或请求失败
+    console.error("Failed to fetch championship data:", error);
+  } finally {
+    loadingStatus.value = false;
+  }
 });
 </script>
 

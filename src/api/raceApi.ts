@@ -7,8 +7,8 @@ import type { Race } from "@/type/common";
  * @param limit get number of races
  * @returns
  */
-export async function getCurrentRaceList(limit?: number): Promise<Response<Race[]>> {
-  const url = "/current?limit=" + limit; // request URL
+export async function getCurrentRaceList(): Promise<Response<Race[]>> {
+  const url = "/current"; // request URL
   const dataKeyName = "races"; // key name of data in response
   const res = await apiRequest<Race[]>(url, dataKeyName);
   return res;

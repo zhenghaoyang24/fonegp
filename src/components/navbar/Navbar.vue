@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {navbarLink} from "@/router";
 import FOSelect from "@/components/common/FOSelect.vue";
 import { Langs } from "@/locales";
 import { useI18n } from "vue-i18n";
@@ -26,10 +27,7 @@ function menuHandle(v: boolean) {
   <nav class="flex items-center justify-between gap-3">
     <MobileMenu v-if="menuOpen" @close="menuHandle(false)" />
     <div class="flex items-center gap-2 [&>a]:text-tm max-md:hidden">
-      <RouterLink to="/home">{{ $t("navigation.home") }}</RouterLink>
-      <RouterLink to="/schedule">{{ $t("navigation.schedule") }}</RouterLink>
-      <RouterLink to="/data">{{ $t("navigation.data") }}</RouterLink>
-      <RouterLink to="/ranking">{{ $t("navigation.ranking") }}</RouterLink>
+      <RouterLink v-for="link in navbarLink" :to="link.path">{{ $t(`navigation.${link.title}`) }}</RouterLink>
     </div>
     <div class="md:hidden cursor-pointer" @click="menuHandle(true)" @mousedown.prevent>
       <FOIcon icon="mdi:menu" :size="26" color="var(--color-tp)" />

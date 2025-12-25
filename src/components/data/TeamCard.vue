@@ -4,7 +4,7 @@
       :style="backgroundHead"
       class="flex gap-1 justify-between items-center pt-4 pb-4 pl-2 pr-2"
     >
-      <img src="../assets/images/flag-nl.png" alt="flag" class="w-5 h-5" />
+      <!-- <img src="" alt="flag" class="w-5 h-5" /> -->
       <div>
         <p class="text-tp font-bold">{{ team.team.teamName }}</p>
       </div>
