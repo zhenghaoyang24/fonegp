@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import type { TeamChampionship } from "@/type/common";
-const backgroundColor = ref<string>("var(--color-primary)");
+const backgroundColor = ref<string>("");
 const backgroundHead = computed(() => {
   return `background-image: linear-gradient(120deg, ${backgroundColor.value}, transparent 70%)`;
 });

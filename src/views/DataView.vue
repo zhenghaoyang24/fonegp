@@ -166,7 +166,7 @@ watch(selectedYear, async (newValue) => {
             </div>
           </div>
           <div v-else="selectedType === 'circuits'">
-            <div class="w-full grid gap-x-2 gap-y-4 grid-cols-2 max-md:grid-cols-1">
+            <div class="w-full grid gap-x-2 gap-y-4 grid-cols-1">
               <CircuitCard v-for="race in racesList" :race="race" />
             </div>
           </div>

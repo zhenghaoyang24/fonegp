@@ -1,6 +1,6 @@
 // 假设你的 JSON 数据长这样（也可以从文件导入）：
 import { countryCode } from "@/data/countryCode";
-
+import Circuit from "@/data/circuit.json";
 /**
  * 获取国家国旗的 CDN 地址
  * @param input 国家名称（如 "Andorra"）或国家代码（如 "ad"）
@@ -26,4 +26,12 @@ export function getFlagUrl(input: string): string | null {
 
   // 未找到
   return null; // 或 throw new Error(`Country or code not found: ${input}`);
+}
+
+export function getCircuitBycircuitId(circuitId: string): string | null {
+  const circuit = Circuit.find((circuit) => circuit.circuitId === circuitId);
+  if (circuit) {
+    return circuit.url;
+  }
+  return null;
 }

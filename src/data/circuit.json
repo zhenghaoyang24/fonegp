@@ -11,7 +11,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2021,
-    "url": "https://en.wikipedia.org/wiki/Albert_Park_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit.webp"
   },
   {
     "circuitId": "shanghai",
@@ -25,7 +25,7 @@
     "fastestLapDriverId": "michael_schumacher",
     "fastestLapTeamId": "ferrari",
     "fastestLapYear": 2004,
-    "url": "http://en.wikipedia.org/wiki/Shanghai_International_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/China_Circuit.webp"
   },
   {
     "circuitId": "suzuka",
@@ -39,7 +39,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2019,
-    "url": "https://en.wikipedia.org/wiki/Suzuka_International_Racing_Course"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Japan_Circuit.webp"
   },
   {
     "circuitId": "bahrain",
@@ -53,7 +53,7 @@
     "fastestLapDriverId": "de_la_rosa",
     "fastestLapTeamId": "mclaren",
     "fastestLapYear": 2005,
-    "url": "http://en.wikipedia.org/wiki/Bahrain_International_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Bahrain_Circuit.webp"
   },
   {
     "circuitId": "jeddah",
@@ -67,7 +67,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2021,
-    "url": "https://en.wikipedia.org/wiki/Jeddah_Corniche_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Saudi_Arabia_Circuit.webp"
   },
   {
     "circuitId": "miami",
@@ -81,7 +81,7 @@
     "fastestLapDriverId": "max_verstappen",
     "fastestLapTeamId": "red_bull",
     "fastestLapYear": 2023,
-    "url": "https://en.wikipedia.org/wiki/Miami_International_Autodrome"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Miami_Circuit.webp"
   },
   {
     "circuitId": "imola",
@@ -95,7 +95,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2020,
-    "url": "https://en.wikipedia.org/wiki/Imola_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Emilia_Romagna_Circuit.webp"
   },
   {
     "circuitId": "monaco",
@@ -109,7 +109,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2021,
-    "url": "https://en.wikipedia.org/wiki/Circuit_de_Monaco"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Monaco_Circuit.webp"
   },
   {
     "circuitId": "montmelo",
@@ -123,7 +123,7 @@
     "fastestLapDriverId": "max_verstappen",
     "fastestLapTeamId": "red_bull",
     "fastestLapYear": 2023,
-    "url": "https://en.wikipedia.org/wiki/Circuit_de_Barcelona-Catalunya"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Spain_Circuit.webp"
   },
   {
     "circuitId": "gilles_villeneuve",
@@ -137,7 +137,7 @@
     "fastestLapDriverId": "bottas",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2019,
-    "url": "https://en.wikipedia.org/wiki/Circuit_Gilles_Villeneuve"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Canada_Circuit.webp"
   },
   {
     "circuitId": "red_bull_ring",
@@ -151,7 +151,7 @@
     "fastestLapDriverId": "sainz",
     "fastestLapTeamId": "mclaren",
     "fastestLapYear": 2020,
-    "url": "https://en.wikipedia.org/wiki/Red_Bull_Ring"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.webp"
   },
   {
     "circuitId": "silverstone",
@@ -165,7 +165,7 @@
     "fastestLapDriverId": "max_verstappen",
     "fastestLapTeamId": "red_bull",
     "fastestLapYear": 2020,
-    "url": "https://en.wikipedia.org/wiki/Silverstone_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Great_Britain_Circuit.webp"
   },
   {
     "circuitId": "spa",
@@ -179,7 +179,7 @@
     "fastestLapDriverId": "bottas",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2018,
-    "url": "https://en.wikipedia.org/wiki/Circuit_de_Spa-Francorchamps"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp"
   },
   {
     "circuitId": "hungaroring",
@@ -193,7 +193,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2020,
-    "url": "https://en.wikipedia.org/wiki/Hungaroring"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Hungary_Circuit.webp"
   },
   {
     "circuitId": "zandvoort",
@@ -207,7 +207,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2021,
-    "url": "https://en.wikipedia.org/wiki/Circuit_Zandvoort"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Netherlands_Circuit.webp"
   },
   {
     "circuitId": "monza",
@@ -221,7 +221,7 @@
     "fastestLapDriverId": "barrichelo",
     "fastestLapTeamId": "ferrari",
     "fastestLapYear": 2004,
-    "url": "https://en.wikipedia.org/wiki/Monza_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.webp"
   },
   {
     "circuitId": "baku",
@@ -235,7 +235,7 @@
     "fastestLapDriverId": "leclerc",
     "fastestLapTeamId": "ferrari",
     "fastestLapYear": 2019,
-    "url": "https://en.wikipedia.org/wiki/Baku_City_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Azerbaijan_Circuit.webp"
   },
   {
     "circuitId": "marina_bay",
@@ -249,7 +249,7 @@
     "fastestLapDriverId": "hamilton",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2023,
-    "url": "https://en.wikipedia.org/wiki/Marina_Bay_Street_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Singapore_Circuit.webp"
   },
   {
     "circuitId": "austin",
@@ -263,7 +263,7 @@
     "fastestLapDriverId": "leclerc",
     "fastestLapTeamId": "ferrari",
     "fastestLapYear": 2019,
-    "url": "https://en.wikipedia.org/wiki/Circuit_of_the_Americas"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/USA_Circuit.webp"
   },
   {
     "circuitId": "hermanos_rodriguez",
@@ -277,7 +277,7 @@
     "fastestLapDriverId": "bottas",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2021,
-    "url": "https://en.wikipedia.org/wiki/Aut%C3%B3dromo_Hermanos_Rodr%C3%ADguez"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Mexico_Circuit.webp"
   },
   {
     "circuitId": "interlagos",
@@ -291,7 +291,7 @@
     "fastestLapDriverId": "bottas",
     "fastestLapTeamId": "mercedes",
     "fastestLapYear": 2018,
-    "url": "https://en.wikipedia.org/wiki/Interlagos_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Brazil_Circuit.webp"
   },
   {
     "circuitId": "vegas",
@@ -305,7 +305,7 @@
     "fastestLapDriverId": "piastri",
     "fastestLapTeamId": "mclaren",
     "fastestLapYear": 2023,
-    "url": "https://en.wikipedia.org/wiki/Las_Vegas_Strip_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Las_Vegas_Circuit.webp"
   },
   {
     "circuitId": "lusail",
@@ -319,7 +319,7 @@
     "fastestLapDriverId": "max_verstappen",
     "fastestLapTeamId": "red_bull",
     "fastestLapYear": 2023,
-    "url": "https://en.wikipedia.org/wiki/Lusail_International_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Qatar_Circuit.webp"
   },
   {
     "circuitId": "yas_marina",
@@ -333,6 +333,6 @@
     "fastestLapDriverId": "max_verstappen",
     "fastestLapTeamId": "red_bull",
     "fastestLapYear": 2021,
-    "url": "https://en.wikipedia.org/wiki/Yas_Marina_Circuit"
+    "url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.webp"
   }
 ]
