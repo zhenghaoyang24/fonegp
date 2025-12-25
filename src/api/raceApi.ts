@@ -32,9 +32,3 @@ export async function getRaceListByYear(
   return res;
 }
 
-export async function getCurrentLastRace(): Promise<Response<Race>> {
-  const url = "/current/last"; // request URL
-  const dataKeyName = "race"; // key name of data in response
-  const res = await apiRequest<Race>(url, dataKeyName);
-  return res;
-}

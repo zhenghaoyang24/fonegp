@@ -44,6 +44,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); /* 动画效果 */
     background-color: #ff2800;
     /* 进度条颜色（你的 F1 主色） */
     border-radius: 3px;

@@ -114,3 +114,24 @@ export interface TeamChampionship {
   wins: number;
   team: Omit<Team, "teamId">;
 }
+
+// race result type
+export interface RaceResult {
+  round: number;
+  date: string;
+  time: string;
+  url: string;
+  raceId: string;
+  raceName: string;
+  circuit: Circuit;
+  results: {
+    position: 1;
+    points: 26;
+    grid: 1;
+    time: "1:31:44";
+    fastLap: null;
+    retired: null;
+    driver: Driver;
+    team: Team;
+  }[];
+}

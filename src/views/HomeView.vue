@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { getCurrentLastRaceResult } from "@/api/resultApi";
 import FOAnimatedNumber from "@/components/common/FOAnimatedNumber.vue";
-import type { Option } from "@/type/common";
+import type { Option, RaceResult } from "@/type/common";
 import FOCard from "@/components/common/FOCard.vue";
 import FOHero from "@/components/common/FOHero.vue";
 import { computed, onMounted, ref } from "vue";
@@ -16,12 +17,34 @@ const { t } = useI18n();
 // current season matches
 const seasonData = computed<Option[]>(() => [
   { label: t("text.totalMatches"), value: useDataStorage.currentRaceListState?.length || 0 },
-  { label: t("text.completedMatches"), value: 12 },
-  { label: t("text.remainingMatches"), value: 12 },
+  { label: t("text.completedMatches"), value: lastRaceResultRef.value?.round || 0 },
+  {
+    label: t("text.remainingMatches"),
+    value:
+      (useDataStorage.currentRaceListState?.length || 0) - (lastRaceResultRef.value?.round || 0),
+  },
 ]);
-
-onMounted(() => {
-  console.log(useDataStorage.currentRaceListState?.length);
+// const progress = computed(() => {
+//   return (
+//     (lastRaceResultRef.value?.round || 0) / (useDataStorage.currentRaceListState?.length || 0)
+//   );
+// });
+const isFetching = ref(false);
+const lastRaceResultRef = ref<RaceResult | null>();
+onMounted(async () => {
+  isFetching.value = true;
+  try {
+    const [lastRaceResult] = await Promise.all([getCurrentLastRaceResult()]);
+    if (lastRaceResult.status === 200) {
+      lastRaceResultRef.value = lastRaceResult.data!;
+    }
+    lastRaceResultRef.value = null;
+    console.log(lastRaceResultRef.value);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    isFetching.value = false;
+  }
 });
 </script>
 
@@ -41,7 +64,9 @@ onMounted(() => {
           <template #content>
             <div class="flex flex-col gap-responsive">
               <FOAnimatedNumber :data="seasonData" />
-              <FOProgress :value="50" />
+              <FOProgress
+                :value="parseInt(((seasonData[2].value / seasonData[0].value) * 100).toFixed(0))"
+              />
               <div class="border-t border-line pt-responsive flex flex-col gap-1">
                 <div class="flex items-center gap-1">
                   <FOIcon icon="lucide-lab:motor-racing-helmet" color="var(--color-ts)" />
