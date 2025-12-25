@@ -6,7 +6,7 @@
       <img v-if="flagUrl" class="h-20 max-md:h-12 rounded" :src="flagUrl" alt="" />
       <div class="text-end overflow-hidden text-nowrap text-ellipsis">
         <div class="font-bold text-3xl max-md:text-lg text-primary overflow-hidden text-ellipsis">
-          {{ race.circuit.circuitName }}
+          <p>{{ index + 1 + ". " + race.circuit.circuitName }}</p>
         </div>
         <div class="text-sm text-ts">{{ race.circuit.city + ", " + race.circuit.country }}</div>
       </div>
@@ -31,12 +31,19 @@
             <p class="text-2xl">{{ race.circuit.corners }}</p>
           </div>
           <div>
-            <p class="text-sm text-ts">laps</p>
+            <p class="text-sm text-ts">Laps</p>
             <p class="text-2xl">{{ race.laps }}</p>
           </div>
           <div>
             <p class="text-sm text-ts">First Grand Prix</p>
             <p class="text-2xl">{{ race.circuit.firstParticipationYear }}</p>
+          </div>
+          <div>
+            <p class="text-sm text-ts">Fast Lap</p>
+            <p class="text-2xl">{{ race.circuit.lapRecord }}</p>
+            <p class="text-sm">
+              {{ race.circuit.fastestLapDriverId + " " + race.circuit.fastestLapYear }}
+            </p>
           </div>
         </div>
       </div>
@@ -51,6 +58,7 @@ import { getFlagUrl, getCircuitBycircuitId } from "@/utils/getUrlUtil";
 import { formatKm } from "@/utils/formatUtil";
 const props = defineProps<{
   race: Race;
+  index: number;
 }>();
 const flagUrl = ref<string | null>();
 const circuildUrl = ref<string | null>();
