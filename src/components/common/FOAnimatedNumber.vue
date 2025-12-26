@@ -1,87 +1,71 @@
 <template>
-    <div class="grid w-ull grid-flow-col">
-        <div v-for="(item, index) in data" :key="index" class="flex flex-col items-center">
-            <span class="text-4xl font-bold text-primary">{{ Math.floor(animatedValues[index]) }}</span>
-            <span class="text-sm text-tm">{{ item.label }}</span>
-        </div>
-    </div>
+  <div class="w-fit flex flex-col items-center">
+    <p class="text-4xl font-bold text-primary">{{ animatedValue.toFixed(0) }}</p>
+    <p class="text-sm text-tm">{{ data.label }}</p>
+  </div>
 </template>
-
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from "vue";
-import { type Option } from "@/type/common";
+import { ref, onMounted, watch } from "vue";
+
+interface Option {
+  label: string;
+  value: number;
+}
 
 interface Props {
-    data?: Option[];
+  data?: Option;
 }
-// TODO: grid-flow-col
-
-onMounted(() => {
-    console.log(gridColsClass.value);
-});
 
 const props = withDefaults(defineProps<Props>(), {
-    data: () => [
-        { label: "Views", value: 150 },
-        { label: "Likes", value: 234 },
-        { label: "Comments", value: 55 },
-    ],
+  data: () => ({
+    label: "Label",
+    value: 0,
+  }),
 });
-const gridColsClass = computed(() => {
-    const length = props.data.length;
-    // 可以根据不同的长度设置不同的 grid 列数
-    // 如果需要更复杂的逻辑，可以在这里扩展
-    return `grid-cols-${length}`;
-});
-// 每个项的当前动画值
-const animatedValues = ref<number[]>([]);
 
-// 初始化所有值为 0
-const initAnimatedValues = () => {
-    animatedValues.value = props.data.map(() => 0);
+// 单个动画值（不是数组）
+const animatedValue = ref(0);
+
+// 启动单个值的动画
+const startAnimation = () => {
+  const target = props.data.value;
+  const start = animatedValue.value;
+
+  // 如果已经是目标值，不重复动画
+  if (start === target) return;
+
+  const duration = (0.8 + Math.random() * 0.7) * 1000; // 800~1500ms
+  const startTime = performance.now();
+
+  const animate = (now: number) => {
+    const elapsed = now - startTime;
+    const t = Math.min(elapsed / duration, 1);
+
+    // Ease-out quadratic
+    const easeOutQuad = 1 - Math.pow(1 - t, 2);
+
+    animatedValue.value = start + (target - start) * easeOutQuad;
+
+    if (t < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      animatedValue.value = target; // 精确保底
+    }
+  };
+
+  requestAnimationFrame(animate);
 };
 
-// 为每个数字启动独立动画
-const startAnimations = () => {
-    props.data.forEach((item, i) => {
-        const target = item.value;
-        const start = animatedValues.value[i] ?? 0;
-        const duration = (0.8 + Math.random() * (1.5 - 0.8)) * 1000; // 单位：毫秒
-        const startTime = performance.now();
-
-        const animate = (now: number) => {
-            const elapsed = now - startTime;
-            let t = Math.min(elapsed / duration, 1);
-
-            // Ease-out quadratic: 开始快，逐渐变慢
-            const easeOutQuad = 1 - Math.pow(1 - t, 2);
-
-            animatedValues.value[i] = start + (target - start) * easeOutQuad;
-
-            if (t < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                animatedValues.value[i] = target; // 确保精确
-            }
-        };
-
-        requestAnimationFrame(animate);
-    });
-};
-
-// 初始化并启动动画
+// 在组件挂载后启动动画
 onMounted(() => {
-    initAnimatedValues();
-    startAnimations();
+  startAnimation();
 });
 
-// 如果 data 变化（如重新加载），重置并重新动画
+// 可选：当 props.data.value 变化时重新触发动画
 watch(
-    () => props.data,
-    () => {
-        initAnimatedValues();
-        startAnimations();
-    },
-    { deep: true }
+  () => props.data.value,
+  () => {
+    startAnimation();
+  }
 );
 </script>

@@ -4,7 +4,7 @@ import FOAnimatedNumber from "@/components/common/FOAnimatedNumber.vue";
 import type { Option, RaceResult } from "@/type/common";
 import FOCard from "@/components/common/FOCard.vue";
 import FOHero from "@/components/common/FOHero.vue";
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeMount, onMounted, ref } from "vue";
 import { dataStorage } from "@/stores/dataStore";
 const useDataStorage = dataStorage();
 import { useI18n } from "vue-i18n";
@@ -15,20 +15,29 @@ import FOIcon from "@/components/common/FOIcon.vue";
 const { t } = useI18n();
 
 // current season matches
-const seasonData = computed<Option[]>(() => [
-  { label: t("text.totalMatches"), value: useDataStorage.currentRaceListState?.length || 0 },
-  { label: t("text.completedMatches"), value: lastRaceResultRef.value?.round || 0 },
-  {
-    label: t("text.remainingMatches"),
-    value:
-      (useDataStorage.currentRaceListState?.length || 0) - (lastRaceResultRef.value?.round || 0),
-  },
-]);
-// const progress = computed(() => {
-//   return (
-//     (lastRaceResultRef.value?.round || 0) / (useDataStorage.currentRaceListState?.length || 0)
-//   );
-// });
+// 总场次
+const totalMatches = computed<Option>(() => ({
+  label: t("text.totalMatches"),
+  value: useDataStorage.currentRaceListState?.length || 0,
+}));
+
+// 已完成场次
+const completedMatches = computed<Option>(() => ({
+  label: t("text.completedMatches"),
+  value: lastRaceResultRef.value?.round || 0,
+}));
+
+// 剩余场次
+const remainingMatches = computed<Option>(() => ({
+  label: t("text.remainingMatches"),
+  value: (useDataStorage.currentRaceListState?.length || 0) - (lastRaceResultRef.value?.round || 0),
+}));
+
+const progress = computed(() => {
+  if (totalMatches.value.value !== 0)
+    return Math.floor((remainingMatches.value.value / totalMatches.value.value!) * 100);
+  return 0;
+});
 const isFetching = ref(false);
 const lastRaceResultRef = ref<RaceResult | null>();
 onMounted(async () => {
@@ -63,10 +72,12 @@ onMounted(async () => {
         <FOCard :title="$t('text.currentSeasonInfo')" icon="mage:message-information-fill">
           <template #content>
             <div class="flex flex-col gap-responsive">
-              <FOAnimatedNumber :data="seasonData" />
-              <FOProgress
-                :value="parseInt(((seasonData[2].value / seasonData[0].value) * 100).toFixed(0))"
-              />
+              <div class="grid grid-cols-3">
+                <div class="flex justify-center"><FOAnimatedNumber :data="totalMatches" /></div>
+                <div class="flex justify-center"><FOAnimatedNumber :data="completedMatches" /></div>
+                <div class="flex justify-center"><FOAnimatedNumber :data="remainingMatches" /></div>
+              </div>
+              <FOProgress :value="progress" />
               <div class="border-t border-line pt-responsive flex flex-col gap-1">
                 <div class="flex items-center gap-1">
                   <FOIcon icon="lucide-lab:motor-racing-helmet" color="var(--color-ts)" />

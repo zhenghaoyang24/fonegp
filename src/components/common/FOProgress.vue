@@ -9,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 
 interface Props {
     showValue?: boolean,
@@ -18,6 +20,10 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     showValue: true,
     title: 'Progress',
+})
+
+onMounted(() => {
+    console.log(props.value)
 })
 </script>
 

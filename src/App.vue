@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Navbar from "@/components/navbar/Navbar.vue";
 import Footer from "@/components/footer/Footer.vue";
-import { onMounted, ref } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 import FOLogo from "./components/common/FOLogo.vue";
 import { dataStorage } from "@/stores/dataStore";
 const { setCurrentRaceListAction, setCurrentSeasonYearAction } = dataStorage();
 // 加载状态 true 正在加载
 const loadingStatus = ref<boolean>(true);
-onMounted(async () => {
+onBeforeMount(async () => {
   loadingStatus.value = true;
   try {
     const [seasons, races] = await Promise.all([
